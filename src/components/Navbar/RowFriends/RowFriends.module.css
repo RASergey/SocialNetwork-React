@@ -1,0 +1,10 @@
+.row {
+	width: 100%;
+	display: grid;
+	position: relative;
+	left: -10px;
+	grid-template-columns: repeat(3, 30%);
+	grid-template-rows: 1fr 1fr;
+	justify-items: stretch;
+	gap: 15px;
+}

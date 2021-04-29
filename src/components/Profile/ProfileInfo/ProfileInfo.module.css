@@ -1,0 +1,17 @@
+/* .headerImg {
+	width: 100%;
+	height: calc(50px + (160 - 50) * ((100vw - 320px) / (1600 - 320)));
+	object-fit: cover;
+	margin-bottom: 20px;
+} */
+
+.rowprofile {
+	padding: 10px;
+	margin-bottom: 20px;
+}
+
+.avatar {
+	width: 100px;
+	height: 100px;
+	object-fit: cover;
+}

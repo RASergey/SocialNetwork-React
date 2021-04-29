@@ -1,0 +1,32 @@
+.header {
+	padding: 5px 10px;
+	grid-area: up;
+	margin: 5px 5px 5px 0;
+	background: rgb(0, 255, 0);
+	border-radius: 5px;
+}
+
+.hederImg {
+	height: 50px;
+	width: 50px;
+	border-radius: 50%;
+	background: rgb(192, 192, 192);
+	box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.5);
+	position: relative;
+	animation-name: move;
+	animation-duration: 6s;
+	animation-delay: 20s;
+	animation-direction: alternate;
+	animation-iteration-count: infinite;
+}
+
+@keyframes move {
+	0% {
+		left: 0%;
+	}
+	50% {
+	}
+	100% {
+		left: 80%;
+	}
+}

@@ -1,0 +1,32 @@
+.dialogs {
+	display: grid;
+	grid-template-columns: 25% 75%;
+	padding-left: 10px;
+	background: rgba(200, 200, 200, 0.3);
+	height: 100vh;
+	padding-bottom: 10px;
+	border-radius: 5px;
+}
+
+.title {
+	padding: 10px 0 10px 20px;
+	font-weight: 500;
+	font-size: 26px;
+	color: #fff;
+	text-transform: uppercase;
+	margin-bottom: 20px;
+}
+
+.dialogsItems {
+	margin-right: 10px;
+}
+
+.dialogsRow {
+	border-radius: 5px;
+	padding: 10px;
+	background: rgba(200, 200, 200, 0.3);
+}
+
+.allMessages {
+	height: 97vh;
+}

@@ -1,0 +1,54 @@
+.navBar {
+	line-height: 200%;
+	font-size: 26px;
+	padding: 20px 10px 0 20px;
+	position: relative;
+	overflow: hidden;
+	min-height: 90vh;
+	margin-right: 5px;
+	border-radius: 5px;
+	background: rgba(200, 200, 200, 0.5);
+}
+
+.friends {
+	font-size: 32px;
+	position: relative;
+	top: 60px;
+	left: 0;
+	letter-spacing: 2px;
+	margin-bottom: 70px;
+}
+
+.rowFriends {
+	margin-bottom: 90px;
+}
+
+.item {
+	display: inline-block;
+	text-decoration: none;
+	transition: all 0.3s;
+	font-weight: 600;
+	color: #fff;
+}
+
+.item:hover {
+	color: black;
+	transform: translate(20px, 0) scale(1.5, 1.5);
+	transition: all 0.5s;
+}
+
+.item.active {
+	color: black;
+}
+
+.item.active::after {
+	content: "";
+	position: relative;
+	top: -5px;
+	left: 10px;
+	display: inline-block;
+	background: black;
+	height: 5px;
+	width: 5px;
+	border-radius: 50%;
+}
