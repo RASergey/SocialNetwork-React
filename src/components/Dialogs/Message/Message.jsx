@@ -2,14 +2,13 @@ import s from './Message.module.css';
 import Inbox from './Inbox/Inbox';
 import Outbox from './Outbox/Outbox';
 import React from 'react';
-import { sendMessageCreator, updateNewMessageBodyCreator } from '../../../redux/dialogsReducer';
 
 const Message = (props) => {
 	let inMessages = props.messages.incomingMessages.map(i => <Inbox inMessage={i.message} avatar={i.avatar} />);
 	let outMessages = props.messages.outboundMessages.map(o => <Outbox outMessage={o.message} avatar={o.avatar} />);
 
-	let onSendMessageClick = () => props.dispatch(sendMessageCreator());
-	let onNewMessageChange = (e) => props.dispatch(updateNewMessageBodyCreator(e.target.value));
+	let onSendMessageClick = () => props.sendMessage();
+	let onNewMessageChange = (e) => props.updateNewMessageBody(e.target.value);
 
 	return (
 		<div className={s.windowMassages}>

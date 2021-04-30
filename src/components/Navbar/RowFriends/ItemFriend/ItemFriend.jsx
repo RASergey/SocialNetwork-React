@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom';
-import s from './ItemFriends.module.css';
+import s from './ItemFriend.module.css';
 
-const ItemFriends = (props) => {
-	let path = '/friends/' + props.id;
+const ItemFriend = (props) => {
+	let path = '/friend/' + props.id;
 
 	return (
 		<div className={s.friendItem + ' ' + s.active}>
@@ -14,4 +14,4 @@ const ItemFriends = (props) => {
 	)
 }
 
-export default ItemFriends;
+export default ItemFriend;
