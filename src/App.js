@@ -10,16 +10,16 @@ import News from './components/News/News';
 import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 
-const App = (props) => {
+const App = () => {
 
 	return (
 		<div className='app-wrapper'>
 			<div className='wrapper'>
 				<Header />
-				<Navbar store={props.store} />
+				<Navbar />
 				<div className='app-wrapper-content'>
-					<Route path='/profile' render={() => <Profile store={props.store} />} />
-					<Route path='/dialogs' render={() => <DialogsContainer store={props.store} />} />
+					<Route path='/profile' render={() => <Profile />} />
+					<Route path='/dialogs' render={() => <DialogsContainer />} />
 					<Route path='/news' component={News} />
 					<Route path='/music' component={Music} />
 					<Route path='/settings' component={Settings} />
