@@ -2,7 +2,7 @@ const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
 let initialState = {
-	newText: '',
+	newText: 'It-Post',
 	posts: [
 		{ id: 0, avatar: 'https://i.ytimg.com/vi/rapOSviNLkw/maxresdefault.jpg', message: 'Hi, how are you?', likesCount: 142 },
 		{ id: 1, avatar: 'https://i.ytimg.com/vi/rapOSviNLkw/maxresdefault.jpg', message: 'bla bla', likesCount: 1266 },
@@ -15,18 +15,23 @@ let initialState = {
 const profileReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case ADD_POST:
-			let newPost = {
-				id: state.posts.length,
-				avatar: 'https://cdn.fishki.net/upload/post/2018/05/04/2588849/7620afabdb00b651da45d24a6bf29de3.jpg',
-				message: state.newText,
-				likesCount: 33
+			return {
+				...state,
+				posts: [
+					...state.posts, {
+						id: state.posts.length,
+						avatar: 'https://cdn.fishki.net/upload/post/2018/05/04/2588849/7620afabdb00b651da45d24a6bf29de3.jpg',
+						message: state.newText,
+						likesCount: 33
+					}
+				],
+				newText: '',
 			}
-			state.newText = '';
-			state.posts.push(newPost);
-			return state;
 		case UPDATE_NEW_POST_TEXT:
-			state.newText = action.newText;
-			return state;
+			return {
+				...state,
+				newText: action.newText
+			}
 		default:
 			return state;
 	}

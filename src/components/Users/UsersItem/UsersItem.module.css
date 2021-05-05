@@ -1,0 +1,43 @@
+.itemUser {
+	display: flex;
+	min-height: 50px;
+	min-width: 100%;
+}
+.userAvatar {
+	flex: 0 0 80px;
+	border-radius: 50%;
+	overflow: hidden;
+}
+
+.userAvatar img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+}
+
+.textUser {
+	flex: 1 1 auto;
+	margin-left: 20px;
+	font-size: 1.5rem;
+	padding: 10px;
+	border-radius: 5px;
+	background: rgba(200, 200, 200, 0.3);
+	display: inline-flex;
+	flex-direction: column;
+}
+
+.textUser name {
+	font-weight: 500;
+}
+
+.textUser address {
+	color: #fff;
+	font-weight: 500;
+	align-self: flex-end;
+	justify-self: flex-start;
+}
+
+.IsFollow {
+	display: inline-block;
+	margin: 10px 0 0 10px;
+}

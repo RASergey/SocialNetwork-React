@@ -1,17 +1,12 @@
-import StoreContext from '../../../StoreContext';
+import { connect } from 'react-redux';
 import RowFriends from './RowFriends';
 
-const RowFriendsContainer = () => {
-	return (
-		<StoreContext.Consumer>
-			{ (store) => {
-				let state = store.getState();
-
-				return <RowFriends friends={state.siteBar.friends} />
-			}}
-		</StoreContext.Consumer>
-	)
+let mapStateToProps = (state) => {
+	return {
+		friends: state.sideBar.friends
+	}
 }
 
+const RowFriendsContainer = connect(mapStateToProps)(RowFriends);
 
 export default RowFriendsContainer;

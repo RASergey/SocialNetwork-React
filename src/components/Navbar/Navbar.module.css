@@ -3,11 +3,10 @@
 	font-size: 26px;
 	padding: 20px 10px 0 20px;
 	position: relative;
-	overflow: hidden;
-	min-height: 90vh;
+	min-height: 100vh;
 	margin-right: 5px;
 	border-radius: 5px;
-	background: rgba(200, 200, 200, 0.5);
+	/* background: rgba(200, 200, 200, 0.5); */
 }
 
 .friends {
@@ -19,8 +18,9 @@
 	margin-bottom: 70px;
 }
 
-.rowFriends {
-	margin-bottom: 90px;
+.settings {
+	position: absolute;
+	top: 80vh;
 }
 
 .item {
@@ -32,22 +32,22 @@
 }
 
 .item:hover {
-	color: black;
+	color: #08ea00;
 	transform: translate(20px, 0) scale(1.5, 1.5);
 	transition: all 0.5s;
 }
 
 .item.active {
-	color: black;
+	color: #08ea00;
 }
 
 .item.active::after {
 	content: "";
 	position: relative;
 	top: -5px;
+	background: #08ea00;
 	left: 10px;
 	display: inline-block;
-	background: black;
 	height: 5px;
 	width: 5px;
 	border-radius: 50%;

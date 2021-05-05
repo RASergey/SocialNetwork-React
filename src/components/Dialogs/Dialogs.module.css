@@ -2,19 +2,7 @@
 	display: grid;
 	grid-template-columns: 25% 75%;
 	padding-left: 10px;
-	background: rgba(200, 200, 200, 0.3);
-	height: 100vh;
-	padding-bottom: 10px;
-	border-radius: 5px;
-}
-
-.title {
-	padding: 10px 0 10px 20px;
-	font-weight: 500;
-	font-size: 26px;
-	color: #fff;
-	text-transform: uppercase;
-	margin-bottom: 20px;
+	height: 91vh;
 }
 
 .dialogsItems {
@@ -28,5 +16,6 @@
 }
 
 .allMessages {
-	height: 97vh;
+	height: 90vh;
+	padding-bottom: 10px;
 }

@@ -1,14 +1,14 @@
-import s from './Post.module.css';
+import style from './Post.module.css';
 
 const Post = (props) => {
 
 	return (
-		<div className={s.item}>
-			<img className={s.avatar} src={props.avatar} alt="avatar" />
-			<p className={s.message}>
+		<div className={style.item}>
+			<img className={style.avatar} src={props.avatar} alt="avatar" />
+			<p className={style.message}>
 				{props.message}
 			</p>
-			<div className={s.like}>
+			<div className={style.like}>
 				<span>like</span> {props.likesCount}
 			</div>
 		</div>

@@ -1,0 +1,13 @@
+.users {
+	padding-left: 10px;
+	height: 100vh;
+}
+
+.rowUsers {
+	min-height: 70vh;
+	margin-bottom: 10px;
+}
+
+.showMore {
+	text-align: center;
+}
