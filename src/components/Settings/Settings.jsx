@@ -1,11 +1,13 @@
-import s from './Settings.module.css';
+import style from './Settings.module.css';
 
-const Settings = (props) => {
+const Settings = () => {
 	return (
 		<div>
-			Settings
+			<div className={style.Settings}>
+				<h2 className='title'>Settings</h2>
+			</div>
 		</div>
-	);
+	)
 }
 
 export default Settings;

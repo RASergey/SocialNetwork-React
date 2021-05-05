@@ -1,11 +1,13 @@
-import s from './News.module.css';
+import style from './News.module.css';
 
-const News = (props) => {
+const News = () => {
 	return (
 		<div>
-			News
+			<div className={style.news}>
+				<h2 className='title'>News</h2>
+			</div>
 		</div>
-	);
+	)
 }
 
 export default News;

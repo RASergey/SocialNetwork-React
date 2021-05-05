@@ -1,11 +1,13 @@
-import s from './Music.module.css';
+import style from './Music.module.css';
 
-const Music = (props) => {
+const Music = () => {
 	return (
 		<div>
-			Music
+			<div className={style.music}>
+				<h2 className='title'>Music</h2>
+			</div>
 		</div>
-	);
+	)
 }
 
 export default Music;

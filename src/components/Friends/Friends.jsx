@@ -1,11 +1,13 @@
 import style from './Friends.module.css';
 
-const Friends = (props) => {
+const Friends = () => {
 	return (
 		<div>
-			Friends
+			<div className={style.friends}>
+				<h2 className='title'>Friends</h2>
+			</div>
 		</div>
-	);
+	)
 }
 
 export default Friends;
