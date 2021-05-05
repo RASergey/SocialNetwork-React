@@ -1,4 +1,4 @@
-import s from './Dialogs.module.css';
+import style from './Dialogs.module.css';
 import DialogsItem from './DialogsItem/DialogsItem';
 import MessageContainer from './Message/MessageContainer';
 
@@ -7,14 +7,14 @@ const Dialogs = (props) => {
 		<DialogsItem name={d.name} avatar={d.avatar} id={d.id} key={d.id} />);
 
 	return (
-		<div className={s.dialogs}>
-			<div className={s.dialogsItems}>
+		<div className={style.dialogs}>
+			<div className={style.dialogsItems}>
 				<h2 className='title'>Dialogs</h2>
-				<div className={s.dialogsRow}>
+				<div className={style.dialogsRow}>
 					{dialogsElements}
 				</div>
 			</div>
-			<div className={s.allMessages}>
+			<div className={style.allMessages}>
 				<MessageContainer />
 			</div>
 		</div>

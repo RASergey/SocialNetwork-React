@@ -1,4 +1,4 @@
-import s from './Message.module.css';
+import style from './Message.module.css';
 import Inbox from './Inbox/Inbox';
 import Outbox from './Outbox/Outbox';
 import React from 'react';
@@ -11,16 +11,16 @@ const Message = (props) => {
 	let onNewMessageChange = (e) => props.updateNewMessageBody(e.target.value);
 
 	return (
-		<div className={s.windowMassages}>
-			<div className={s.messages}>
-				<div className={s.inMessages}>
+		<div className={style.windowMassages}>
+			<div className={style.messages}>
+				<div className={style.inMessages}>
 					{inMessages}
 				</div>
-				<div className={s.outMessages}>
+				<div className={style.outMessages}>
 					{outMessages}
 				</div>
 			</div>
-			<div className={s.sendMessage}>
+			<div className={style.sendMessage}>
 				<textarea value={props.newMessageBody} onChange={onNewMessageChange} placeholder='Enter your massage' />
 				<button onClick={onSendMessageClick}>Send</button>
 			</div>

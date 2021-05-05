@@ -1,11 +1,11 @@
-import s from './Outbox.module.css';
+import style from './Outbox.module.css';
 
 const Outbox = (props) => {
 
 	return (
-		<div className={s.message}>
-			<span className={s.text}>{props.outMessage}</span>
-			<img className={s.avatar} src={props.avatar} alt="avatar" />
+		<div className={style.message}>
+			<span className={style.text}>{props.outMessage}</span>
+			<img className={style.avatar} src={props.avatar} alt="avatar" />
 		</div>
 	)
 }

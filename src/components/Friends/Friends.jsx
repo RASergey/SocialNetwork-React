@@ -1,4 +1,4 @@
-import s from './Friends.module.css';
+import style from './Friends.module.css';
 
 const Friends = (props) => {
 	return (
