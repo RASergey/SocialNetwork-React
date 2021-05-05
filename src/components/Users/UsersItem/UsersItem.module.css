@@ -1,3 +1,10 @@
+.itemUserWrapper {
+	margin-bottom: 20px;
+}
+
+.itemUserWrapper:last-child {
+	margin-bottom: 0px;
+}
 .itemUser {
 	display: flex;
 	min-height: 50px;
@@ -26,7 +33,7 @@
 	flex-direction: column;
 }
 
-.textUser name {
+.textUser p {
 	font-weight: 500;
 }
 
@@ -37,7 +44,7 @@
 	justify-self: flex-start;
 }
 
-.IsFollow {
+.itemUserWrapper button {
 	display: inline-block;
 	margin: 10px 0 0 10px;
 }

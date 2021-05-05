@@ -5,23 +5,25 @@ const UserItem = (props) => {
 		<div className={style.itemUserWrapper}>
 			<div className={style.itemUser}>
 				<div className={style.userAvatar}>
-					<img src='https://cdn.vox-cdn.com/thumbor/0y8QEqAYroMOoEMU-D7C4kvBU-Y=/95x601:1280x1391/1310x873/cdn.vox-cdn.com/uploads/chorus_image/image/66699059/mgidarccontentnick.comc008fa9d_d.0.png' alt="avatar" />
+					<img src={props.avatar} alt="avatar" />
 				</div>
 				<div className={style.textUser}>
-					<name>
-						First Name
-						Last Name
-							</name>
+					<p>
+						{props.firstName} {props.lastName}
+					</p>
 					<address>
-						Belarus,
-						Minsk
-							</address>
+						{props.city}, {props.country}
+					</address>
 					<span>
-						Status
-							</span>
+						{props.status}
+					</span>
 				</div>
 			</div>
-			<button className={style.IsFollow}>Follow</button>
+			{
+				props.followed ?
+					<button onClick={() => { props.unFollow(props.id) }}>UnFollow</button> :
+					<button onClick={() => { props.follow(props.id) }}>Follow</button>
+			}
 		</div>
 	)
 }

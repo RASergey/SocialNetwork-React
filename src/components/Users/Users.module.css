@@ -4,7 +4,8 @@
 }
 
 .rowUsers {
-	min-height: 70vh;
+	overflow-y: scroll;
+	height: 75vh;
 	margin-bottom: 10px;
 }
 
