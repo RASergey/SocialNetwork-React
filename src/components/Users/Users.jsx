@@ -15,7 +15,7 @@ const Users = (props) => {
 			<h2 className='title'>Users</h2>
 			<ul className={style.rowPage}>
 				{pages.map(p => {
-					return <li className={props.currentPage === p && style.selectedPage}
+					return <li className={props.currentPage === p ? style.selectedPage : null}
 						onClick={(e) => { props.onPageChanged(p); }} key={p}>{p}</li>
 				})}
 			</ul>
