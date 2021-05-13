@@ -2,7 +2,7 @@
 	display: grid;
 	grid-template-columns: 25% 75%;
 	padding-left: 10px;
-	height: 91vh;
+	height: 88vh;
 }
 
 .dialogsItems {
@@ -16,6 +16,6 @@
 }
 
 .allMessages {
-	height: 90vh;
+	overflow: hidden;
 	padding-bottom: 10px;
 }

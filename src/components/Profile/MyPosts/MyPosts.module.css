@@ -26,9 +26,10 @@
 	flex-direction: column-reverse;
 	position: relative;
 	width: 90%;
-	max-height: 55vh;
+	max-height: 135vh;
 	overflow-y: scroll;
 	scroll-snap-type: y mandatory;
+	/* padding-bottom: 10px; */
 }
 
 .rowPost::-webkit-scrollbar {
