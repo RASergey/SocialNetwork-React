@@ -37,7 +37,7 @@ const profileReducer = (state = initialState, action) => {
 	}
 }
 
-export const addPostCreator = () => ({ type: ADD_POST });
-export const updateNewPostTextCreator = (newText) => ({ type: UPDATE_NEW_POST_TEXT, newText: newText });
+export const addPost = () => ({ type: ADD_POST });
+export const updateNewPostText = (newText) => ({ type: UPDATE_NEW_POST_TEXT, newText: newText });
 
 export default profileReducer;
