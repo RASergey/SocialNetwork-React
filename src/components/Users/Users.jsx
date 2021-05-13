@@ -1,61 +1,52 @@
-import style from './Users.module.css'
-import UserItem from './UsersItem/UsersItem'
+import React from 'react';
+import style from './Users.module.css';
+import userPhoto from '../../assets/images/avatar.png'
 
 const Users = (props) => {
-	if (props.users.length === 0) {
-		props.setUsers(
-			[
-				{
-					id: 0,
-					followed: false,
-					avatar: 'https://cdn.vox-cdn.com/thumbor/0y8QEqAYroMOoEMU-D7C4kvBU-Y=/95x601:1280x1391/1310x873/cdn.vox-cdn.com/uploads/chorus_image/image/66699059/mgidarccontentnick.comc008fa9d_d.0.png',
-					firstName: 'Dmitriy',
-					lastName: 'Samuray',
-					status: 'I am a boss',
-					location: { city: 'Minsk', country: 'Belarus' }
-				},
-				{
-					id: 1,
-					followed: true,
-					avatar: 'https://a.d-cd.net/41c4e1u-960.jpg',
-					firstName: 'Sasha',
-					lastName: 'Volkov',
-					status: 'I am a student first',
-					location: { city: 'Moscow', country: 'Russia' }
-				},
-				{
-					id: 2,
-					followed: false,
-					avatar: 'https://img3.goodfon.ru/wallpaper/nbig/3/51/avatar-neytiri-zoe-saldana-6192.jpg',
-					firstName: 'Andrew',
-					lastName: 'Anisin',
-					status: 'I am a student second',
-					location: { city: 'Kiev', country: 'Ukraine' }
-				},
-			]
-		)
+	let pagesCount = props.totalUsersCount / props.pageSize
+	let pages = []
+
+	for (let i = 1; i <= Math.ceil(pagesCount); i++) {
+		pages.push(i);
 	}
 
-	let usersItem = props.users.map(u =>
-		<UserItem
-			id={u.id}
-			followed={u.followed}
-			avatar={u.avatar}
-			firstName={u.firstName}
-			lastName={u.lastName}
-			status={u.status}
-			country={u.location.country}
-			city={u.location.city}
-			key={u.id}
-			follow={props.follow}
-			unFollow={props.unFollow}
-		/>
-	)
 	return (
 		<div className={style.users}>
 			<h2 className='title'>Users</h2>
+			<ul className={style.rowPage}>
+				{pages.map(p => {
+					return <li className={props.currentPage === p && style.selectedPage}
+						onClick={(e) => { props.onPageChanged(p); }} key={p}>{p}</li>
+				})}
+			</ul>
 			<div className={style.rowUsers}>
-				{usersItem}
+				{
+					props.users.map(u =>
+						<div className={style.itemUserWrapper} key={u.id}>
+							<div className={style.itemUser}>
+								<div className={style.userAvatar}>
+									<img src={u.photos.small != null ? u.photos.small : userPhoto} alt="avatar" />
+								</div>
+								<div className={style.textUser}>
+									<p>
+										{u.name}
+									</p>
+									<address>
+										{'u.location.city'}, {'u.location.country'}
+									</address>
+									<span>
+										{u.status}
+									</span>
+								</div>
+							</div>
+							{
+								u.followed ?
+									<button onClick={() => { props.unFollow(u.id) }}>UnFollow</button> :
+									<button onClick={() => { props.follow(u.id) }}>Follow</button>
+							}
+						</div>
+					)
+				}
 			</div>
 			<div className={style.showMore}>
 				<button>Show More</button>
