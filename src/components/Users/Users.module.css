@@ -70,8 +70,9 @@
 	flex-direction: column;
 }
 
-.textUser p {
+.textUser a {
 	font-weight: 500;
+	color: inherit;
 }
 
 .textUser address {

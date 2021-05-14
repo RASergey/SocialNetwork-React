@@ -1,10 +1,51 @@
 .rowprofile {
-	padding: 10px;
-	margin-bottom: 20px;
+	margin-bottom: 40px;
+	display: flex;
+	justify-content: space-between;
+	min-height: 35vh;
+	position: relative;
 }
 
 .avatar {
 	width: 200px;
 	height: 200px;
 	object-fit: cover;
+	border-radius: 5px;
+}
+
+.listUserInfo {
+	background: rgba(200, 200, 200, 0.3);
+	margin-left: 20px;
+	padding: 10px;
+	flex: 1 1 auto;
+	font-size: 24px;
+	position: relative;
+	border-radius: 5px;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.fullName {
+	font-size: 28px;
+	font-weight: 700;
+	flex: 1 1 auto;
+}
+
+.contacts {
+	flex: 0 0 50%;
+	line-height: 110%;
+	margin-bottom: 10px;
+}
+
+.aboutMe {
+	flex: 0 0 100%;
+	margin-bottom: 10px;
+}
+
+.lookingForAJob {
+	flex: 0 0 50%;
+}
+.lookingForAJobDescription {
+	flex: 0 0 50%;
 }

@@ -11,25 +11,25 @@
 
 .yourNews textarea {
 	display: block;
-	width: 80%;
+	width: 95%;
 	margin-bottom: 10px;
 }
 
 .yourNews button {
 	margin-left: 5px;
 	position: relative;
-	right: 20%;
+	right: 5%;
 }
 
 .rowPost {
 	display: flex;
 	flex-direction: column-reverse;
 	position: relative;
-	width: 90%;
+	width: 95%;
 	max-height: 135vh;
-	overflow-y: scroll;
+	overflow-y: auto;
+	border-radius: 10px;
 	scroll-snap-type: y mandatory;
-	/* padding-bottom: 10px; */
 }
 
 .rowPost::-webkit-scrollbar {
