@@ -24,24 +24,22 @@ const Users = (props) => {
 				{
 					props.users.map(u =>
 						<div className={style.itemUserWrapper} key={u.id}>
-							<div className={style.itemUser}>
-								<div className={style.userAvatar}>
-									<NavLink to={'/profile/' + u.id}>
+							<NavLink to={'/profile/' + u.id}>
+								<div className={style.itemUser}>
+									<div className={style.userAvatar}>
 										<img src={u.photos.small != null ? u.photos.small : userPhoto} alt="avatar" />
-									</NavLink>
-								</div>
-								<div className={style.textUser}>
-									<NavLink to={'/profile/' + u.id}>
+									</div>
+									<div className={style.textUser}>
 										{u.name}
-									</NavLink>
-									<address>
-										{'u.location.city'}, {'u.location.country'}
-									</address>
-									<span>
-										{u.status}
-									</span>
+										<address>
+											{'u.location.city'}, {'u.location.country'}
+										</address>
+										<span>
+											{u.status}
+										</span>
+									</div>
 								</div>
-							</div>
+							</NavLink>
 							{
 								u.followed ?
 									<button onClick={() => { props.unFollow(u.id) }}>UnFollow</button> :
