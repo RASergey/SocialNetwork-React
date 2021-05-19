@@ -82,5 +82,6 @@
 
 .itemUserWrapper button {
 	display: inline-block;
-	margin: 10px 0 0 10px;
+	margin: 5px 0px 15px;
+	float: right;
 }
