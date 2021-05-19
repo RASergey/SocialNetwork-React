@@ -4,6 +4,8 @@
 	margin: 5px 0 5px 0;
 	background: linear-gradient(180deg, #08ea00, #12d4ee);
 	border-radius: 5px;
+	display: flex;
+	justify-content: space-between;
 }
 
 .hederImg {
@@ -12,5 +14,14 @@
 	border-radius: 50%;
 	background: rgb(192, 192, 192);
 	box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.5);
-	position: relative;
+}
+
+.loginBlock {
+	margin-right: 30px;
+	line-height: 2;
+	font-size: 20px;
+}
+
+.loginBlock a {
+	color: #fff;
 }

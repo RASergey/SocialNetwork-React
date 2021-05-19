@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import './App.css';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import Friends from './components/Friends/Friends';
-import Header from './components/Header/Header';
+import HeaderContainer from './components/Header/HeaderContainer';
 import Music from './components/Music/Music';
 import Navbar from './components/Navbar/Navbar';
 import News from './components/News/News';
@@ -12,14 +12,13 @@ import Settings from './components/Settings/Settings';
 import UsersContainer from './components/Users/UsersContainer';
 
 const App = () => {
-
 	return (
 		<div className='app-wrapper'>
 			<div className='wrapper'>
-				<Header />
+				<HeaderContainer />
 				<Navbar />
 				<div className='app-wrapper-content'>
-					<Route path='/profile/:userId' render={() => <ProfileContainer />} />
+					<Route path='/profile/:userId?' render={() => <ProfileContainer />} />
 					<Route path='/dialogs' render={() => <DialogsContainer />} />
 					<Route path='/users' render={() => <UsersContainer />} />
 					<Route path='/news' component={News} />
