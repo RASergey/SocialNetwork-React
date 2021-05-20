@@ -1,5 +1,6 @@
 import style from './ProfileInfo.module.css';
 import Preloader from '../../common/Preloader/Preloader';
+import profilePhoto from '../../../assets/images/avatar.png';
 
 const ProfileInfo = (props) => {
 	if (!props.profile) {
@@ -11,7 +12,7 @@ const ProfileInfo = (props) => {
 	}
 	return (
 		<div className={style.rowprofile}>
-			<img className={style.avatar} src={props.profile.photos.small} alt='/' />
+			<img className={style.avatar} src={props.profile.photos.small != null ? props.profile.photos.small : profilePhoto} alt='/' />
 			<div className={style.listUserInfo}>
 				<p className={style.fullName}>{props.profile.fullName}</p>
 				<ul className={style.contacts}>
