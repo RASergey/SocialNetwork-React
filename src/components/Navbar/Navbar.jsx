@@ -4,7 +4,7 @@ import RowFriendsContainer from './RowFriends/RowFriendsContainer';
 
 const Navbar = (props) => {
 	return (
-		<nav className={style.navBar}>
+		<nav className={style.navBar + ' ' + (!props.isAuth ? style.navBarNone : '')}>
 			<div>
 				<NavLink className={style.item} activeClassName={style.active} to='/profile'>Profile</NavLink>
 			</div>

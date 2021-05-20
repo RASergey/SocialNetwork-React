@@ -8,6 +8,10 @@
 	border-radius: 5px;
 }
 
+.navBarNone {
+	display: none;
+}
+
 .friends {
 	font-size: 32px;
 	position: relative;
