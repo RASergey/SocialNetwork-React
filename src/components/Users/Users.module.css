@@ -85,3 +85,9 @@
 	margin: 5px 0px 15px;
 	float: right;
 }
+
+.itemUserWrapper button:disabled {
+	opacity: 0.5;
+	border: 1px solid #000;
+	color: red;
+}

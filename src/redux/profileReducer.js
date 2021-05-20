@@ -1,10 +1,12 @@
+import { usersAPI } from '../api/api';
+
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
 
 let initialState = {
-	newText: 'It-Post',
+	newText: '',
 	posts: [
 		{ id: 0, avatar: 'https://i.ytimg.com/vi/rapOSviNLkw/maxresdefault.jpg', message: 'Hi, how are you?', likesCount: 142 },
 		{ id: 1, avatar: 'https://i.ytimg.com/vi/rapOSviNLkw/maxresdefault.jpg', message: 'bla bla', likesCount: 1266 },
@@ -53,4 +55,18 @@ export const addPost = () => ({ type: ADD_POST });
 export const updateNewPostText = (newText) => ({ type: UPDATE_NEW_POST_TEXT, newText: newText });
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
+
+export const getUserProfile = (userId) => {
+	return (dispatch) => {
+		if (initialState.profile) {
+			dispatch(toggleIsFetching(true));
+		}
+		usersAPI.getProfile(userId).then(response => {
+			dispatch(setUserProfile(response.data));
+		})
+			.finally(() => {
+				dispatch(toggleIsFetching(false));
+			})
+	}
+}
 export default profileReducer;
