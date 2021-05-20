@@ -32,13 +32,12 @@ let initialState = {
 			{ id: 5, avatar: 'https://cdn.fishki.net/upload/post/2018/05/04/2588849/7620afabdb00b651da45d24a6bf29de3.jpg', message: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita reiciendis et cumque dolor consequatur facere doloremque, placeat eaque autem debitis laboriosam. Explicabo quia alias ipsum ad consequuntur eius, exercitationem assumenda.' }
 		]
 	},
-	newMessageBody: 'It-Dialog'
+	newMessageBody: ''
 }
 
 const dialogsReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case SEND_MESSAGE:
-			// let body = state.newMessageBody;
 			return {
 				...state,
 				messages: {
