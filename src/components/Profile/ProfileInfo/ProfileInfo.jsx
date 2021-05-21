@@ -1,6 +1,7 @@
 import style from './ProfileInfo.module.css';
 import Preloader from '../../common/Preloader/Preloader';
 import profilePhoto from '../../../assets/images/avatar.png';
+import ProfileStatus from './ProfileStatus/ProfileStatus';
 
 const ProfileInfo = (props) => {
 	if (!props.profile) {
@@ -14,7 +15,10 @@ const ProfileInfo = (props) => {
 		<div className={style.rowprofile}>
 			<img className={style.avatar} src={props.profile.photos.small != null ? props.profile.photos.small : profilePhoto} alt='/' />
 			<div className={style.listUserInfo}>
-				<p className={style.fullName}>{props.profile.fullName}</p>
+				<div className={style.rowNameStatus}>
+					<p className={style.fullName}>{props.profile.fullName}</p>
+					<ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus} />
+				</div>
 				<ul className={style.contacts}>
 					<li><strong>facebook:</strong> {props.profile.contacts.facebook}</li>
 					<li><strong>website:</strong> {props.profile.contacts.website}</li>

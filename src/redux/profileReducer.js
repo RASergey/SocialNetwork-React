@@ -1,8 +1,9 @@
-import { usersAPI } from '../api/api';
+import { profileAPI } from '../api/api';
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
+const SET_USER_STATUS = 'SET-USER-STATUS';
 const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
 
 let initialState = {
@@ -15,7 +16,8 @@ let initialState = {
 		{ id: 4, avatar: 'https://i.ytimg.com/vi/rapOSviNLkw/maxresdefault.jpg', message: 'It\'s my first post', likesCount: 123 }
 	],
 	profile: null,
-	isFetching: false
+	isFetching: false,
+	status: ''
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -46,6 +48,9 @@ const profileReducer = (state = initialState, action) => {
 		case TOGGLE_IS_FETCHING: {
 			return { ...state, isFetching: action.isFetching }
 		}
+		case SET_USER_STATUS: {
+			return { ...state, status: action.status }
+		}
 		default:
 			return state;
 	}
@@ -54,6 +59,7 @@ const profileReducer = (state = initialState, action) => {
 export const addPost = () => ({ type: ADD_POST });
 export const updateNewPostText = (newText) => ({ type: UPDATE_NEW_POST_TEXT, newText: newText });
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
+export const setUserStatus = (status) => ({ type: SET_USER_STATUS, status });
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 
 export const getUserProfile = (userId) => {
@@ -61,12 +67,30 @@ export const getUserProfile = (userId) => {
 		if (initialState.profile) {
 			dispatch(toggleIsFetching(true));
 		}
-		usersAPI.getProfile(userId).then(response => {
+		profileAPI.getProfile(userId).then(response => {
 			dispatch(setUserProfile(response.data));
 		})
 			.finally(() => {
 				dispatch(toggleIsFetching(false));
 			})
+	}
+}
+
+export const getUserStatus = (userId) => {
+	return (dispatch) => {
+		profileAPI.getStatus(userId).then(response => {
+			dispatch(setUserStatus(response.data));
+		})
+	}
+}
+
+export const updateUserStatus = (status) => {
+	return (dispatch) => {
+		profileAPI.updateStatus(status).then(response => {
+			if (response.data.resultCode === 0) {
+				dispatch(setUserStatus(status));
+			}
+		})
 	}
 }
 export default profileReducer;

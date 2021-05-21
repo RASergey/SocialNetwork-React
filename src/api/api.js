@@ -11,32 +11,36 @@ const instance = axios.create({
 export const usersAPI = {
 	getUsers(currentPage, pageSize) {
 		return instance.get(`users?page=${currentPage}&count=${pageSize}`)
-			.then(response => {
-				return response.data;
-			});
-	},
-	getProfile(userId) {
-		return instance.get(`profile/${userId}`);
-	},
+			.then(response => response.data);
+	}
+}
+
+export const followAPI = {
 	followDelete(userId) {
 		return instance.delete(`follow/${userId}`)
-			.then(response => {
-				return response.data;
-			});
+			.then(response => response.data);
 	},
 	followPost(userId) {
 		return instance.post(`follow/${userId}`, {})
-			.then(response => {
-				return response.data;
-			});
+			.then(response => response.data);
 	}
+}
+
+export const profileAPI = {
+	getProfile(userId) {
+		return instance.get(`profile/${userId}`);
+	},
+	getStatus(userId) {
+		return instance.get(`profile/status/${userId}`);
+	},
+	updateStatus(status) {
+		return instance.put(`profile/status/`, { status });
+	},
 }
 
 export const authAPI = {
 	me() {
 		return instance.get(`auth/me`)
-			.then(response => {
-				return response.data;
-			});
+			.then(response => response.data);
 	}
 }

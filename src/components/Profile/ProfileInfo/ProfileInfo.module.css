@@ -26,10 +26,14 @@
 	justify-content: space-between;
 }
 
+.rowNameStatus {
+	flex: 1 1 auto;
+}
+
 .fullName {
 	font-size: 28px;
 	font-weight: 700;
-	flex: 1 1 auto;
+	margin-bottom: 10px;
 }
 
 .contacts {
