@@ -110,9 +110,10 @@ button:active {
 	box-shadow: 0 0 8px rgb(96, 157, 159);
 }
 
-textarea {
+textarea,
+input {
 	color: #fff;
-	font-size: 22px;
+	font-size: 20px;
 	resize: none;
 	padding: 10px;
 	box-shadow: 0 0 5px rgb(200, 200, 200);
