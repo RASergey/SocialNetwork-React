@@ -8,6 +8,17 @@ const instance = axios.create({
 	}
 })
 
+function checkResultCode(response) {
+	return new Promise((resolve, reject) => {
+		let resultCode = response.data.resultCode;
+		if (resultCode === 0) {
+			resolve(response.data);
+		} else {
+			reject(new Error(`Код запроса: ${resultCode}`));
+		}
+	})
+}
+
 export const usersAPI = {
 	getUsers(currentPage, pageSize) {
 		return instance.get(`users?page=${currentPage}&count=${pageSize}`)
@@ -18,11 +29,11 @@ export const usersAPI = {
 export const followAPI = {
 	followDelete(userId) {
 		return instance.delete(`follow/${userId}`)
-			.then(response => response.data);
+			.then(response => checkResultCode(response));
 	},
 	followPost(userId) {
 		return instance.post(`follow/${userId}`, {})
-			.then(response => response.data);
+			.then(response => checkResultCode(response));
 	}
 }
 
@@ -34,13 +45,22 @@ export const profileAPI = {
 		return instance.get(`profile/status/${userId}`);
 	},
 	updateStatus(status) {
-		return instance.put(`profile/status/`, { status });
+		return instance.put(`profile/status/`, { status })
+			.then(response => checkResultCode(response));
 	},
 }
 
 export const authAPI = {
+	signIn(email, password, rememberMe) {
+		return instance.post(`auth/login`, { email, password, rememberMe })
+			.then(response => checkResultCode(response));
+	},
+	logOut() {
+		return instance.post(`auth/logout`, {})
+			.then(response => checkResultCode(response));
+	},
 	me() {
 		return instance.get(`auth/me`)
-			.then(response => response.data);
-	}
+			.then(response => checkResultCode(response));
+	},
 }
