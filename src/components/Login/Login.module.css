@@ -1,0 +1,60 @@
+.formWrapper {
+	display: flex;
+}
+.form {
+	margin: 20% 20%;
+	border: 2px solid #fff;
+	padding: 30px;
+	border-radius: 5px;
+}
+
+.form input {
+	padding: 10px 10px 5px;
+	width: 200px;
+	margin-bottom: 20px;
+	background: rgba(255, 255, 255, 0.5);
+	transition: all 0.3s;
+}
+
+.form input:focus {
+	background: #fff;
+	color: #000;
+	transition: all 0.3s;
+}
+
+.checkbox input {
+	transition: all 0.3s;
+	width: 15px;
+	margin: 20px 15px 30px 0;
+}
+
+.checkbox input:focus {
+	transition: all 0.3s;
+	transform: scale(1.5, 1.5);
+}
+
+.checkbox input:hover {
+	transition: all 0.3s;
+	transform: scale(1.5, 1.5);
+}
+
+.form label {
+	transition: all 0.3s;
+	cursor: pointer;
+	font-size: 24px;
+	font-weight: 600;
+	color: #fff;
+}
+
+.form label:hover {
+	transition: all 0.3s;
+	color: #08ea00;
+}
+
+.form button {
+	float: right;
+}
+
+.form button:focus {
+	border: 1px solid #000;
+}

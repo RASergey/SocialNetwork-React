@@ -5,7 +5,6 @@
 	background: linear-gradient(180deg, #08ea00, #12d4ee);
 	border-radius: 5px;
 	display: flex;
-	justify-content: space-between;
 }
 
 .hederImg {
@@ -17,11 +16,30 @@
 }
 
 .loginBlock {
-	margin-right: 30px;
-	line-height: 2;
-	font-size: 20px;
+	flex: 1 1 auto;
+	margin-right: 20px;
 }
 
-.loginBlock a {
+.login {
+	line-height: 2;
+	font-size: 20px;
+	margin-top: 5px;
+	float: right;
+}
+
+.login a {
 	color: #fff;
+}
+
+.rowButton {
+	text-align: center;
+	flex: 0 0 75px;
+}
+
+.header button {
+	margin-top: 10px;
+}
+
+.header button a {
+	color: inherit;
 }
