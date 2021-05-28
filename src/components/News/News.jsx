@@ -1,3 +1,5 @@
+import { compose } from 'redux';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import style from './News.module.css';
 
 const News = () => {
@@ -10,4 +12,6 @@ const News = () => {
 	)
 }
 
-export default News;
+export default compose(
+	withAuthRedirect
+)(News)

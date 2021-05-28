@@ -1,3 +1,5 @@
+import { compose } from 'redux';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import style from './Music.module.css';
 
 const Music = () => {
@@ -10,4 +12,6 @@ const Music = () => {
 	)
 }
 
-export default Music;
+export default compose(
+	withAuthRedirect
+)(Music)

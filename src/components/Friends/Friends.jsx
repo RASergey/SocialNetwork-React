@@ -1,3 +1,5 @@
+import { compose } from 'redux';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import style from './Friends.module.css';
 
 const Friends = () => {
@@ -10,4 +12,6 @@ const Friends = () => {
 	)
 }
 
-export default Friends;
+export default compose(
+	withAuthRedirect
+)(Friends)
