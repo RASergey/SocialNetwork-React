@@ -14,7 +14,7 @@ function checkResultCode(response) {
 		if (resultCode === 0) {
 			resolve(response.data);
 		} else {
-			reject(new Error(`Код запроса: ${resultCode}`));
+			reject(response.data);
 		}
 	})
 }
@@ -55,8 +55,8 @@ export const authAPI = {
 		return instance.post(`auth/login`, { email, password, rememberMe })
 			.then(response => checkResultCode(response));
 	},
-	logOut() {
-		return instance.post(`auth/logout`, {})
+	logout() {
+		return instance.delete(`auth/login`, {})
 			.then(response => checkResultCode(response));
 	},
 	me() {

@@ -16,10 +16,10 @@ const Header = (props) => {
 			</div>
 			<div className={style.rowButton}>
 				{props.isAuth ||
-					<button><NavLink to='/login'>Sign In</NavLink></button>
+					<NavLink to='/login'><button>Sign In</button></NavLink>
 				}
 				{!props.isAuth ||
-					<button onClick={() => props.setlogOut()}><NavLink to='/login'>log Out</NavLink></button>
+					<NavLink to='/login'><button onClick={() => props.setlogout()}>log Out</button></NavLink>
 				}
 			</div>
 		</header>

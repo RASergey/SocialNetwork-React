@@ -1,0 +1,12 @@
+.wrapperPreloader {
+	display: inline-block;
+	height: 60px;
+	width: 60px;
+	position: absolute;
+	left: 55%;
+	right: 45%;
+}
+.wrapperPreloader img {
+	height: 100%;
+	width: 100%;
+}
