@@ -4,7 +4,7 @@ import './App.css';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import Friends from './components/Friends/Friends';
 import HeaderContainer from './components/Header/HeaderContainer';
-import LoginContainer from './components/Login/LoginContainer';
+import Login from './components/Login/Login';
 import Music from './components/Music/Music';
 import NavBarContainer from './components/Navbar/NavbarContainer';
 import News from './components/News/News';
@@ -26,7 +26,7 @@ const App = () => {
 					<Route path='/music' component={Music} />
 					<Route path='/settings' component={Settings} />
 					<Route path='/friends' render={() => <Friends />} />
-					<Route path='/login' component={LoginContainer} />
+					<Route path='/login' component={Login} />
 				</div>
 			</div>
 		</div>
