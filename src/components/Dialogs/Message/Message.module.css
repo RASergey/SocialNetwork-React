@@ -11,7 +11,7 @@
 	overflow: auto;
 	padding: 5px;
 	font-size: 20px;
-	min-height: 90%;
+	min-height: 85%;
 	width: 100%;
 	overflow-y: auto;
 	overflow-x: hidden;
@@ -40,23 +40,22 @@
 	justify-content: flex-start;
 	scroll-snap-align: end;
 }
-
 .sendMessage {
-	position: relative;
-	bottom: 0px;
-	right: 0;
-	left: 0;
-	padding-bottom: 10px;
+	display: flex;
+	align-items: flex-end;
 }
 
-.sendMessage textarea {
-	display: inline-block;
-	width: 90%;
+.sendMessageText {
+	flex: 1 1 auto;
 	margin-top: 10px;
+	border-radius: 5px;
+	margin-left: 2px;
 }
 
-.sendMessage button {
-	position: relative;
-	left: 10px;
-	top: -35px;
+.sendMessageText textarea {
+	width: 100%;
+}
+
+.sendMessageButton button {
+	margin-left: 10px;
 }

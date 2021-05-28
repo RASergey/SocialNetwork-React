@@ -8,10 +8,11 @@
 	border-radius: 5px;
 }
 
-.form input {
-	padding: 10px 10px 5px;
-	width: 200px;
+.form div {
 	margin-bottom: 20px;
+}
+
+.form input {
 	background: rgba(255, 255, 255, 0.5);
 	transition: all 0.3s;
 }
@@ -23,35 +24,58 @@
 }
 
 .checkbox input {
-	transition: all 0.3s;
-	width: 15px;
-	margin: 20px 15px 30px 0;
-}
-
-.checkbox input:focus {
-	transition: all 0.3s;
-	transform: scale(1.5, 1.5);
-}
-
-.checkbox input:hover {
-	transition: all 0.3s;
-	transform: scale(1.5, 1.5);
+	display: none;
 }
 
 .form label {
-	transition: all 0.3s;
+	margin: 20px 15px 10px 0;
+	display: inline-block;
 	cursor: pointer;
-	font-size: 24px;
-	font-weight: 600;
+	width: 15px;
+	height: 15px;
+	background: #fff;
+	border-radius: 50%;
+	transition: all 0.3s;
 	color: #fff;
 }
 
-.form label:hover {
+.checkbox label::before {
+	content: "";
+	position: relative;
+	left: 2px;
+	top: -2px;
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	opacity: 0;
+}
+
+.checkbox label::after {
+	content: "Rememer me";
+	position: relative;
+	left: 30px;
+	top: -22px;
+	display: inline-block;
+	white-space: nowrap;
+	font-size: 24px;
+	font-weight: 600;
+}
+
+.checkbox input:checked + label {
 	transition: all 0.3s;
+	background: #08ea00;
 	color: #08ea00;
 }
 
+.checkbox input:checked + label::before {
+	transition: all 0.3s;
+	background: black;
+	opacity: 1;
+}
+
 .form button {
+	margin-top: 10px;
 	float: right;
 }
 

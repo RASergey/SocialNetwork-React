@@ -4,6 +4,7 @@ import profilePhoto from '../../../assets/images/avatar.png';
 import ProfileStatus from './ProfileStatus/ProfileStatus';
 
 const ProfileInfo = (props) => {
+
 	if (!props.profile) {
 		return (
 			<div>
@@ -17,7 +18,11 @@ const ProfileInfo = (props) => {
 			<div className={style.listUserInfo}>
 				<div className={style.rowNameStatus}>
 					<p className={style.fullName}>{props.profile.fullName}</p>
-					<ProfileStatus status={props.status} updateUserStatus={props.updateUserStatus} />
+					<ProfileStatus
+						status={props.status}
+						authorizedUserId={props.authorizedUserId}
+						currentUserId={props.currentUserId}
+						updateUserStatus={props.updateUserStatus} />
 				</div>
 				<ul className={style.contacts}>
 					<li><strong>facebook:</strong> {props.profile.contacts.facebook}</li>
@@ -35,7 +40,6 @@ const ProfileInfo = (props) => {
 			</div>
 		</div>
 	)
-
 }
 
 export default ProfileInfo;

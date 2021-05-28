@@ -1,5 +1,4 @@
 const SEND_MESSAGE = 'SEND-MESSAGE';
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
 
 let initialState = {
 	dialogs: [
@@ -23,16 +22,8 @@ let initialState = {
 			{ id: 8, avatar: 'https://i09.fotocdn.net/s122/c8aca65ce0efc401/user_l/2780959785.jpg', message: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita reiciendis et cumque dolor consequatur facere doloremque, placeat eaque autem debitis laboriosam. Explicabo quia alias ipsum ad consequuntur eius, exercitationem assumenda.' },
 			{ id: 9, avatar: 'https://i09.fotocdn.net/s122/c8aca65ce0efc401/user_l/2780959785.jpg', message: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita reiciendis et cumque dolor consequatur facere doloremque, placeat eaque autem debitis laboriosam. Explicabo quia alias ipsum ad consequuntur eius, exercitationem assumenda.' }
 		],
-		outboundMessages: [
-			{ id: 0, avatar: 'https://cdn.fishki.net/upload/post/2018/05/04/2588849/7620afabdb00b651da45d24a6bf29de3.jpg', message: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita reiciendis et cumque dolor consequatur facere doloremque, placeat eaque autem debitis laboriosam. Explicabo quia alias ipsum ad consequuntur eius, exercitationem assumenda.' },
-			{ id: 1, avatar: 'https://cdn.fishki.net/upload/post/2018/05/04/2588849/7620afabdb00b651da45d24a6bf29de3.jpg', message: 'How are you' },
-			{ id: 2, avatar: 'https://cdn.fishki.net/upload/post/2018/05/04/2588849/7620afabdb00b651da45d24a6bf29de3.jpg', message: 'Yo' },
-			{ id: 3, avatar: 'https://cdn.fishki.net/upload/post/2018/05/04/2588849/7620afabdb00b651da45d24a6bf29de3.jpg', message: 'Hello' },
-			{ id: 4, avatar: 'https://cdn.fishki.net/upload/post/2018/05/04/2588849/7620afabdb00b651da45d24a6bf29de3.jpg', message: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita reiciendis et cumque dolor consequatur facere doloremque, placeat eaque autem debitis laboriosam. Explicabo quia alias ipsum ad consequuntur eius, exercitationem assumenda.' },
-			{ id: 5, avatar: 'https://cdn.fishki.net/upload/post/2018/05/04/2588849/7620afabdb00b651da45d24a6bf29de3.jpg', message: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita reiciendis et cumque dolor consequatur facere doloremque, placeat eaque autem debitis laboriosam. Explicabo quia alias ipsum ad consequuntur eius, exercitationem assumenda.' }
-		]
+		outboundMessages: []
 	},
-	newMessageBody: ''
 }
 
 const dialogsReducer = (state = initialState, action) => {
@@ -46,24 +37,16 @@ const dialogsReducer = (state = initialState, action) => {
 						...state.messages.outboundMessages, {
 							id: state.messages.outboundMessages.length,
 							avatar: 'https://cdn.fishki.net/upload/post/2018/05/04/2588849/7620afabdb00b651da45d24a6bf29de3.jpg',
-							message: state.newMessageBody,
+							message: action.newMessageBody,
 						}
 					]
 				},
-				newMessageBody: ''
-			}
-		case UPDATE_NEW_MESSAGE_BODY:
-			return {
-				...state,
-				newMessageBody: action.body
 			}
 		default:
 			return state;
 	}
 }
 
-export const sendMessage = () => ({ type: SEND_MESSAGE });
-export const updateNewMessageBody = (body) => ({ type: UPDATE_NEW_MESSAGE_BODY, body: body });
-
+export const sendMessage = (newMessageBody) => ({ type: SEND_MESSAGE, newMessageBody });
 
 export default dialogsReducer;

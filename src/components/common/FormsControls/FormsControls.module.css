@@ -1,0 +1,27 @@
+.error {
+	position: relative;
+	box-shadow: 2px 2px 3px red, -2px -2px 3px red;
+}
+
+.error > span {
+	display: inline-block;
+	padding: 5px 10px 5px;
+	text-align: center;
+	color: #fff;
+	font-size: 1.3rem;
+	background: rgba(255, 0, 0, 0.6);
+	border-radius: 5px;
+	white-space: nowrap;
+	position: absolute;
+	left: 103%;
+	bottom: 10%;
+}
+
+.textarea span {
+	left: 30%;
+}
+
+.input span {
+	top: 20%;
+	left: 117%;
+}

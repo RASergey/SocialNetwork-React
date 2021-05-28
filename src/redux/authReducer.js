@@ -1,7 +1,7 @@
+import { stopSubmit } from 'redux-form';
 import { authAPI } from '../api/api';
 
 const SET_USER_DATA = 'SET-USER=DATA';
-const SET_AUTH = 'SET-AUTH';
 
 let initialState = {
 	userId: null,
@@ -16,13 +16,7 @@ const authReducer = (state = initialState, action) => {
 		case SET_USER_DATA: {
 			return {
 				...state,
-				...action.data,
-			}
-		}
-		case SET_AUTH: {
-			return {
-				...state,
-				isAuth: action.isAuth
+				...action.payload
 			}
 		}
 		default:
@@ -30,30 +24,33 @@ const authReducer = (state = initialState, action) => {
 	}
 }
 
-export const setAuthUserData = (userId, email, login) => ({ type: SET_USER_DATA, data: { userId, email, login } });
-export const setAuth = (isAuth) => ({ type: SET_AUTH, isAuth });
+export const setAuthUserData = (userId, email, login, isAuth) => ({ type: SET_USER_DATA, payload: { userId, email, login, isAuth } });
 
 export const getAuthUserData = () => {
 	return (dispatch) => {
 		authAPI.me().then(data => {
-			let { id, login, email } = data.data
-			dispatch(setAuthUserData(id, email, login));
+			let { id, login, email } = data.data;
+			dispatch(setAuthUserData(id, email, login, true));
+		}).catch(() => {
 		})
 	}
 }
 
 export const setLogin = (formData) => {
 	return (dispatch) => {
-		authAPI.signIn(formData.login, formData.password, formData.rememberMe).then(() => {
-			dispatch(setAuth(true));
+		authAPI.signIn(formData.email, formData.password, formData.rememberMe).then(() => {
+			dispatch(getAuthUserData());
+		}).catch((data) => {
+			let messages = data.messages.length > 0 ? data.messages[0] : 'Some error';
+			dispatch(stopSubmit('login', { _error: messages }));
 		})
 	}
 }
 
-export const setlogOut = () => {
+export const setlogout = () => {
 	return (dispatch) => {
-		authAPI.logOut().then(() => {
-			dispatch(setAuth(false));
+		authAPI.logout().then(() => {
+			dispatch(setAuthUserData(null, null, null, false));
 		})
 	}
 }

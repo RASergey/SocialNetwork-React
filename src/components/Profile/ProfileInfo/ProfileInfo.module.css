@@ -3,7 +3,7 @@
 	display: flex;
 	justify-content: space-between;
 	min-height: 35vh;
-	position: relative;
+	word-break: break-all;
 }
 
 .avatar {
@@ -11,15 +11,14 @@
 	height: 200px;
 	object-fit: cover;
 	border-radius: 5px;
+	margin-right: 20px;
 }
 
 .listUserInfo {
 	background: rgba(200, 200, 200, 0.3);
-	margin-left: 20px;
 	padding: 10px;
 	flex: 1 1 auto;
 	font-size: 24px;
-	position: relative;
 	border-radius: 5px;
 	display: flex;
 	flex-wrap: wrap;
@@ -27,7 +26,10 @@
 }
 
 .rowNameStatus {
-	flex: 1 1 auto;
+	padding-right: 10px;
+	overflow: hidden;
+	flex: 0 0 50%;
+	flex-wrap: nowrap;
 }
 
 .fullName {
@@ -37,6 +39,7 @@
 }
 
 .contacts {
+	user-select: text;
 	flex: 0 0 50%;
 	line-height: 110%;
 	margin-bottom: 10px;
