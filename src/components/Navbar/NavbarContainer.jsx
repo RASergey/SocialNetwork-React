@@ -3,7 +3,8 @@ import Navbar from './Navbar';
 
 let mapStateToProps = (state) => {
 	return {
-		isAuth: state.auth.isAuth
+		isAuth: state.auth.isAuth,
+		userId: state.auth.userId
 	}
 }
 
