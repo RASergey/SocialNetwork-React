@@ -7,22 +7,24 @@ body {
 .wrapper {
 	max-width: 1200px;
 	margin: 0 auto;
-	display: grid;
-	grid-template-areas:
-		"up up"
-		"nav content";
-	grid-template-rows: 70px 90vh;
-	grid-template-columns: 20% 80%;
 }
 
-.app-wrapper-content {
-	margin-top: 5px;
-	grid-area: content;
-	border-radius: 5px;
+.container {
+	display: flex;
+	padding: 5px 5px 0;
 }
 
 .navBar {
-	grid-area: nav;
+	flex: 0 0 20%;
+}
+
+.navBarNone {
+	display: none;
+}
+
+.content {
+	flex: 1 1 auto;
+	border-radius: 5px;
 }
 
 ::-webkit-scrollbar {

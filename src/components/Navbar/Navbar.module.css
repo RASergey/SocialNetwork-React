@@ -8,10 +8,6 @@
 	border-radius: 5px;
 }
 
-.navBarNone {
-	display: none;
-}
-
 .friends {
 	font-size: 32px;
 	position: relative;
@@ -23,7 +19,7 @@
 
 .settings {
 	position: absolute;
-	top: 80vh;
+	top: 85vh;
 }
 
 .item {
