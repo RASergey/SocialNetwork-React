@@ -1,4 +1,5 @@
 import { profileAPI } from '../api/api';
+import { toggleIsFetching } from './usersReducer';
 
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
@@ -50,8 +51,10 @@ export const setUserStatus = (status) => ({ type: SET_USER_STATUS, status });
 
 export const getUserProfile = (userId) => {
 	return (dispatch) => {
+		dispatch(toggleIsFetching(true));
 		profileAPI.getProfile(userId).then(response => {
 			dispatch(setUserProfile(response.data));
+			dispatch(toggleIsFetching(false));
 		})
 	}
 }

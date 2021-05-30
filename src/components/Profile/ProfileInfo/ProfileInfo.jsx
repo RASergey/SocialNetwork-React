@@ -14,6 +14,7 @@ const ProfileInfo = (props) => {
 	}
 	return (
 		<div className={style.rowprofile}>
+			<Preloader isFetching={props.isFetching} />
 			<img className={style.avatar} src={props.profile.photos.small != null ? props.profile.photos.small : profilePhoto} alt='/' />
 			<div className={style.listUserInfo}>
 				<div className={style.rowNameStatus}>
@@ -40,6 +41,7 @@ const ProfileInfo = (props) => {
 			</div>
 		</div>
 	)
+
 }
 
 export default ProfileInfo;

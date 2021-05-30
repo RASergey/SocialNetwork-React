@@ -5,7 +5,8 @@ import { updateUserStatus } from '../../../redux/profileReducer';
 let mapStateToProps = (state) => ({
 	profile: state.profilePage.profile,
 	status: state.profilePage.status,
-	authorizedUserId: state.auth.userId
+	authorizedUserId: state.auth.userId,
+	isFetching: state.usersPage.isFetching,
 })
 
 export default connect(mapStateToProps, { updateUserStatus })(ProfileInfo);
