@@ -12,6 +12,12 @@ class UsersContainer extends React.Component {
 		this.props.getUsers(this.props.currentPage, this.props.pageSize);
 	}
 
+	getlistPageNumbers = () => {
+		let listPageNumbers = this.props.listPageNumbers;
+		let lastUsersPage = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
+		return { listPageNumbers, lastUsersPage }
+	}
+
 	onPageChanged = (pageNumber) => {
 		this.props.setCurrentPage(pageNumber);
 		this.props.getUsers(pageNumber, this.props.pageSize);
@@ -21,8 +27,7 @@ class UsersContainer extends React.Component {
 		return <>
 			<Preloader isFetching={this.props.isFetching} />
 			<Users
-				totalUsersCount={this.props.totalUsersCount}
-				pageSize={this.props.pageSize}
+				getlistPageNumbers={this.getlistPageNumbers}
 				currentPage={this.props.currentPage}
 				onPageChanged={this.onPageChanged}
 				users={this.props.users}
@@ -37,6 +42,7 @@ class UsersContainer extends React.Component {
 let mapStateToProps = (state) => {
 	return {
 		users: state.usersPage.users,
+		listPageNumbers: state.usersPage.listPageNumbers,
 		pageSize: state.usersPage.pageSize,
 		totalUsersCount: state.usersPage.totalUsersCount,
 		currentPage: state.usersPage.currentPage,

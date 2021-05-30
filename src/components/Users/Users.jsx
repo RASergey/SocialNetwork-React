@@ -4,21 +4,22 @@ import style from './Users.module.css';
 import userPhoto from '../../assets/images/avatar.png'
 
 const Users = (props) => {
-	let pagesCount = props.totalUsersCount / props.pageSize
-	let pages = []
-
-	for (let i = 1; i <= Math.ceil(pagesCount); i++) {
-		pages.push(i);
-	}
+	const { listPageNumbers, lastUsersPage } = props.getlistPageNumbers();
+	const firstPage = props.currentPage < 4 ? style.noBlock : null;
+	const lastPage = props.currentPage > lastUsersPage - 10 ? style.noBlock : null;
 
 	return (
 		<div className={style.users}>
 			<h2 className='title'>Users</h2>
 			<ul className={style.rowPage}>
-				{pages.map(p => {
+				<li className={firstPage} onClick={() => { props.onPageChanged(1) }} >{'<<'}</li>
+				<li className={firstPage} onClick={() => { props.onPageChanged(props.currentPage - 1) }} >{'<'}</li>
+				{listPageNumbers.map(p => {
 					return <li className={props.currentPage === p ? style.selectedPage : null}
-						onClick={(e) => { props.onPageChanged(p); }} key={p}>{p}</li>
+						onClick={() => { props.onPageChanged(p); }} key={p}>{p}</li>
 				})}
+				<li className={lastPage} onClick={() => { props.onPageChanged(props.currentPage + 1) }} >{'>'}</li>
+				<li className={lastPage} onClick={() => { props.onPageChanged(lastUsersPage) }} >{'>>'}</li>
 			</ul>
 			<div className={style.rowUsers}>
 				{
