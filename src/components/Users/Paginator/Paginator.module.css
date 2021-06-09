@@ -1,0 +1,49 @@
+.paginator {
+	display: flex;
+	max-width: 100%;
+	justify-content: space-between;
+}
+
+.paginator button {
+	display: inline-block;
+	align-self: start;
+}
+
+.paginator button:first-child {
+	margin-right: 15px;
+}
+
+.paginator button:last-child {
+	margin-left: 15px;
+}
+
+.noActiv {
+	pointer-events: none;
+	opacity: 0;
+}
+
+.rowPage {
+	flex: 0 1 80%;
+	padding: 10px;
+	margin-bottom: 20px;
+	font-size: 20px;
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	margin-left: 20px;
+}
+
+.rowPage li {
+	margin-right: 20px;
+	cursor: pointer;
+	padding-bottom: 2px;
+}
+
+.selectedPage {
+	border-radius: 50%;
+	transform: scale(1.5, 1.5);
+	text-align: center;
+	box-shadow: 2px 2px 15px #fff, -2px -2px 15px #fff;
+	text-shadow: 1px 1px 1px #000, -1px -1px 1px #000;
+	font-weight: 900;
+}
