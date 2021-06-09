@@ -13,7 +13,7 @@ import NavBarContainer from './components/Navbar/NavbarContainer';
 import News from './components/News/News';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import Settings from './components/Settings/Settings';
-import UsersContainer from './components/Users/UsersContainer';
+import UsersPage from './components/Users/UsersPage';
 import { initializedApp } from './redux/appReducer';
 
 class App extends React.Component {
@@ -38,7 +38,7 @@ class App extends React.Component {
 					<div className='content'>
 						<Route path='/profile/:userId?' render={() => <ProfileContainer />} />
 						<Route path='/dialogs' render={() => <DialogsContainer />} />
-						<Route path='/users' render={() => <UsersContainer />} />
+						<Route path='/users' render={() => <UsersPage />} />
 						<Route path='/news' component={News} />
 						<Route path='/music' component={Music} />
 						<Route path='/settings' component={Settings} />
