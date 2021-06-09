@@ -1,13 +1,14 @@
 import louding from '../../../assets/images/Spin-2.1s-131px.svg';
 import style from './Preloader.module.css';
 
-const Preloader = (props) => {
+const Preloader = () => {
+
 	return (
 		<div className={style.wrapperPreloader}>
-			{props.isFetching ? <img src={louding} alt={'loading'} /> : null}
+			<img src={louding} alt={'loading'} />
 		</div>
 	)
 
-}
+};
 
 export default Preloader;

@@ -8,13 +8,14 @@ const ProfileInfo = (props) => {
 	if (!props.profile) {
 		return (
 			<div>
-				<Preloader isFetching='true' />
+				<Preloader />
 			</div>
 		)
-	}
+	};
+
 	return (
 		<div className={style.rowprofile}>
-			<Preloader isFetching={props.isFetching} />
+			{props.isFetching ? <Preloader /> : null}
 			<img className={style.avatar} src={props.profile.photos.small != null ? props.profile.photos.small : profilePhoto} alt='/' />
 			<div className={style.listUserInfo}>
 				<div className={style.rowNameStatus}>

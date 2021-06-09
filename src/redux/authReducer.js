@@ -1,13 +1,14 @@
-import { stopSubmit } from 'redux-form';
 import { authAPI } from '../api/api';
 
 const SET_USER_DATA = 'SET-USER=DATA';
+const SET_MESSAGE_ERROR = 'SET-MESSAGE-ERROR';
 
 let initialState = {
 	userId: null,
 	email: null,
 	login: null,
-	isAuth: false
+	isAuth: false,
+	messageError: ''
 }
 
 const authReducer = (state = initialState, action) => {
@@ -19,12 +20,19 @@ const authReducer = (state = initialState, action) => {
 				...action.payload
 			}
 		}
+		case SET_MESSAGE_ERROR: {
+			return {
+				...state,
+				...action.payload
+			}
+		}
 		default:
 			return state;
 	}
 }
 
 export const setAuthUserData = (userId, email, login, isAuth) => ({ type: SET_USER_DATA, payload: { userId, email, login, isAuth } });
+export const setMessageError = (messageError) => ({ type: SET_MESSAGE_ERROR, payload: { messageError } });
 
 export const getAuthUserData = () => {
 	return (dispatch) => {
@@ -42,7 +50,7 @@ export const setLogin = (formData) => {
 			dispatch(getAuthUserData());
 		}).catch((data) => {
 			let messages = data.messages.length > 0 ? data.messages[0] : 'Some error';
-			dispatch(stopSubmit('login', { _error: messages }));
+			dispatch(setMessageError(messages));
 		})
 	}
 }
