@@ -1,0 +1,52 @@
+.messageForm {
+	width: 100%;
+}
+
+.sendMessage {
+	display: flex;
+	align-items: flex-end;
+	position: relative;
+}
+
+.sendMessageText {
+	flex: 1 1 auto;
+	margin-top: 10px;
+	border-radius: 5px;
+	margin-left: 2px;
+}
+
+.sendMessageText textarea {
+	width: 100%;
+}
+
+.sendMessageButton button {
+	margin-left: 10px;
+}
+
+.error {
+	position: relative;
+	box-shadow: 2px 2px 3px red, -2px -2px 3px red;
+}
+
+.errorMessage {
+	display: inline-block;
+	padding: 5px 10px 5px;
+	text-align: center;
+	color: #fff;
+	font-size: 1.3rem;
+	background: rgba(255, 0, 0, 0.6);
+	border-radius: 5px;
+	white-space: nowrap;
+	position: absolute;
+	left: 103%;
+	bottom: 10%;
+}
+
+.errorMessage {
+	left: 30%;
+}
+
+.disabledBtn {
+	pointer-events: none;
+	opacity: 0.5;
+}

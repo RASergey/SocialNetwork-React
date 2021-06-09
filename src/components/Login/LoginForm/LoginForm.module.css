@@ -1,0 +1,115 @@
+.containerForm {
+	margin: 10% auto;
+}
+
+.form {
+	border: 2px solid #fff;
+	padding: 40px 40px 20px;
+	border-radius: 5px;
+}
+
+.form div {
+	margin-bottom: 20px;
+}
+
+.form input {
+	background: rgba(255, 255, 255, 0.5);
+	transition: all 0.3s;
+}
+
+.form input:focus {
+	background: #fff;
+	color: #000;
+	transition: all 0.3s;
+}
+
+.checkbox input {
+	display: none;
+}
+
+.form label {
+	margin: 20px 15px 0 0;
+	display: inline-block;
+	cursor: pointer;
+	width: 15px;
+	height: 15px;
+	background: #fff;
+	border-radius: 50%;
+	transition: all 0.3s;
+	color: #fff;
+}
+
+.checkbox label::before {
+	content: "";
+	position: relative;
+	left: 2px;
+	top: -1px;
+	display: inline-block;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+}
+
+.checkbox label::after {
+	content: "Rememer me";
+	position: relative;
+	left: 30px;
+	top: -22px;
+	display: inline-block;
+	white-space: nowrap;
+	font-size: 24px;
+	font-weight: 600;
+}
+
+.checkbox input:checked + label,
+.checkbox label:hover,
+.checkbox label:focus {
+	transition: all 0.3s;
+	background: #08ea00;
+	color: #08ea00;
+}
+
+.checkbox input:checked + label::before {
+	transition: all 0.3s;
+	background: black;
+	opacity: 1;
+}
+
+.form button {
+	position: relative;
+	left: 70%;
+}
+
+.form button:focus {
+	border: 1px solid #000;
+}
+
+/*======================================================*/
+
+.error {
+	position: relative;
+	box-shadow: 2px 2px 3px red, -2px -2px 3px red;
+}
+
+.errorMessage {
+	display: inline-block;
+	padding: 5px 10px 5px;
+	text-align: center;
+	color: #fff;
+	font-size: 1.3rem;
+	background: rgba(255, 0, 0, 0.6);
+	border-radius: 5px;
+	white-space: nowrap;
+	position: absolute;
+	left: 103%;
+	bottom: 10%;
+}
+
+.errorMessage {
+	left: 120%;
+}
+
+.disabledBtn {
+	pointer-events: none;
+	opacity: 0.5;
+}

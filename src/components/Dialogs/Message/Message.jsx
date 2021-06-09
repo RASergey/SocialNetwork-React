@@ -2,21 +2,12 @@ import style from './Message.module.css';
 import Inbox from './Inbox/Inbox';
 import Outbox from './Outbox/Outbox';
 import React from 'react';
-import { Field, reduxForm, reset } from 'redux-form';
-import { Element } from '../../common/FormsControls/FormsContols';
-import { maxLength, required } from '../../../utils/validators/validators';
+import MessageForm from './MessageForm/MessageForm';
 
-const Textarea = Element('textarea');
-const maxLength100 = maxLength(100);
+const Message = ({ sendMessage, messages }) => {
 
-const Message = (props) => {
-	let inMessages = props.messages.incomingMessages.map(i => <Inbox inMessage={i.message} avatar={i.avatar} key={i.id} />);
-	let outMessages = props.messages.outboundMessages.map(o => <Outbox outMessage={o.message} avatar={o.avatar} key={o.id} />);
-
-	const addNewMessage = (values, dispatch) => {
-		props.sendMessage(values.newMessageBody);
-		dispatch(reset('dialogAddMessageForm'));
-	}
+	let inMessages = messages.incomingMessages.map(i => <Inbox inMessage={i.message} avatar={i.avatar} key={i.id} />);
+	let outMessages = messages.outboundMessages.map(o => <Outbox outMessage={o.message} avatar={o.avatar} key={o.id} />);
 
 	return (
 		<div className={style.windowMassages}>
@@ -28,28 +19,9 @@ const Message = (props) => {
 					{outMessages}
 				</div>
 			</div>
-			<OutMessageReduxForm onSubmit={addNewMessage} />
+			<MessageForm sendMessage={sendMessage} />
 		</div>
 	)
 }
-
-const AddMessageForm = (props) => {
-	return (
-		<form className={style.sendMessage} onSubmit={props.handleSubmit}>
-			<div className={style.sendMessageText}>
-				<Field
-					component={Textarea}
-					name='newMessageBody'
-					placeholder='Enter your massage'
-					validate={[required, maxLength100]} />
-			</div>
-			<div className={style.sendMessageButton}>
-				<button>Send</button>
-			</div>
-		</form>
-	)
-}
-
-const OutMessageReduxForm = reduxForm({ form: 'dialogAddMessageForm' })(AddMessageForm);
 
 export default Message;

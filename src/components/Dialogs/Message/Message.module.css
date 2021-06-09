@@ -39,22 +39,3 @@
 	justify-content: flex-start;
 	scroll-snap-align: end;
 }
-.sendMessage {
-	display: flex;
-	align-items: flex-end;
-}
-
-.sendMessageText {
-	flex: 1 1 auto;
-	margin-top: 10px;
-	border-radius: 5px;
-	margin-left: 2px;
-}
-
-.sendMessageText textarea {
-	width: 100%;
-}
-
-.sendMessageButton button {
-	margin-left: 10px;
-}
