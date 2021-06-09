@@ -4,20 +4,22 @@ const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
+const SET_FILTER = 'SET-FILTER';
 const SET_TOTAL_YSERS_COUNT = 'SET-TOTAL-YSERS-COUNT';
 const TOGGLE_IS_FETCHING = 'TOGGLE-IS-FETCHING';
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'FOLLOWING-IN-PROGRESS';
-const SET_LIST_PAGE_NUMBERS = 'SET-LIST-PAGE-NUMBERS';
 
 let initialState = {
 	users: [],
-	listPageNumbers: [],
 	pageSize: 10,
 	totalUsersCount: 0,
 	currentPage: 1,
 	isFetching: false,
-	isFollowingInProgress: []
-}
+	followingInProgress: [],
+	filter: {
+		term: ''
+	}
+};
 
 const usersReducer = (state = initialState, action) => {
 
@@ -50,6 +52,9 @@ const usersReducer = (state = initialState, action) => {
 		case SET_CURRENT_PAGE: {
 			return { ...state, currentPage: action.currentPage }
 		}
+		case SET_FILTER: {
+			return { ...state, filter: action.payload }
+		}
 		case SET_TOTAL_YSERS_COUNT: {
 			return { ...state, totalUsersCount: action.count }
 		}
@@ -58,42 +63,37 @@ const usersReducer = (state = initialState, action) => {
 		}
 		case TOGGLE_IS_FOLLOWING_PROGRESS: {
 			return {
-				...state, isFollowingInProgress: action.isFetching
-					? [...state.isFollowingInProgress, action.userId]
-					: state.isFollowingInProgress.filter(id => id !== action.userId)
+				...state, followingInProgress: action.isFetching
+					? [...state.followingInProgress, action.userId]
+					: state.followingInProgress.filter(id => id !== action.userId)
 			}
-		}
-		case SET_LIST_PAGE_NUMBERS: {
-			return { ...state, listPageNumbers: action.listPageNumbers }
 		}
 		default:
 			return state;
-	}
-}
+	};
+};
 
 export const followSuccess = (userId) => ({ type: FOLLOW, userId });
 export const unFollowSuccess = (userId) => ({ type: UNFOLLOW, userId });
 export const setUsers = (users) => ({ type: SET_USERS, users });
 export const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage });
+export const setFilter = (term) => ({ type: SET_FILTER, payload: { term } });
 export const setTotalUsersCount = (totalUsersCount) => ({ type: SET_TOTAL_YSERS_COUNT, count: totalUsersCount });
 export const toggleIsFetching = (isFetching) => ({ type: TOGGLE_IS_FETCHING, isFetching });
 export const toggleFollowingProgress = (isFetching, userId) => ({ type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId });
-export const setListPageNumbers = (listPageNumbers) => ({ type: SET_LIST_PAGE_NUMBERS, listPageNumbers });
 
-export const requestUsers = (currentPage, pageSize) => {
-	return (dispatch) => {
+export const requestUsers = (page, pageSize, term) => {
+	return async (dispatch) => {
 		dispatch(toggleIsFetching(true));
-		usersAPI.getUsers(currentPage, pageSize).then(data => {
-			dispatch(setUsers(data.items));
-			dispatch(setTotalUsersCount(data.totalCount));
-			dispatch(toggleIsFetching(false));
-			return data.totalCount;
-		})
-			.then((totalCount) => {
-				dispatch(creatListPageNumbers(totalCount, pageSize, currentPage));
-			})
-	}
-}
+		dispatch(setCurrentPage(page));
+		dispatch(setFilter(term));
+
+		let data = await usersAPI.getUsers(page, pageSize, term);
+		dispatch(setUsers(data.items));
+		dispatch(setTotalUsersCount(data.totalCount));
+		dispatch(toggleIsFetching(false));
+	};
+};
 
 export const follow = (userId) => {
 	return (dispatch) => {
@@ -103,8 +103,8 @@ export const follow = (userId) => {
 		}).finally(() => {
 			dispatch(toggleFollowingProgress(false, userId));
 		})
-	}
-}
+	};
+};
 
 export const unFollow = (userId) => {
 	return (dispatch) => {
@@ -114,31 +114,7 @@ export const unFollow = (userId) => {
 		}).finally(() => {
 			dispatch(toggleFollowingProgress(false, userId));
 		})
-	}
-}
-
-export const creatListPageNumbers = (totalUsersCount, pageSize, currentPage) => {
-	return (dispatch) => {
-		const PageNumbers = [];
-		let lastPage = Math.ceil(totalUsersCount / pageSize);
-		let minListPageNumber = currentPage < 3 ? 1 : currentPage - 2;
-		let maxListPageNumber;
-
-		if (lastPage) {
-			if (currentPage > lastPage - 10) {
-				maxListPageNumber = lastPage + 1;
-				minListPageNumber = currentPage - (10 - (lastPage - currentPage));
-			} else {
-				maxListPageNumber = currentPage + 10;
-			}
-		}
-
-		for (let i = minListPageNumber; i < maxListPageNumber; i++) {
-			PageNumbers.push(i);
-		}
-
-		dispatch(setListPageNumbers(PageNumbers))
-	}
-}
+	};
+};
 
 export default usersReducer;
