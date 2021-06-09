@@ -20,8 +20,8 @@ function checkResultCode(response) {
 }
 
 export const usersAPI = {
-	getUsers(currentPage, pageSize) {
-		return instance.get(`users?page=${currentPage}&count=${pageSize}`)
+	getUsers(page, pageSize, term = '') {
+		return instance.get(`users?page=${page}&count=${pageSize}&term=${term}`)
 			.then(response => response.data);
 	}
 }

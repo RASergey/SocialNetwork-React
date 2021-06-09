@@ -1,68 +1,75 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { memo, useCallback, useEffect, useState } from 'react';
 import style from './Users.module.css';
-import userPhoto from '../../assets/images/avatar.png'
+import Paginator from './Paginator/Paginator';
+import UserItem from './UserItem/UserItem';
+import UsersSearchForm from './UsersSearchForm/UsersSearchForm';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCurrentPage, getPageSize, getUsers, getFollowingInProgress, getUsersFilter } from '../../redux/users-selectors';
+import { requestUsers, unFollow, follow } from '../../redux/usersReducer';
 
-const Users = (props) => {
-	const { listPageNumbers, lastUsersPage } = props.getlistPageNumbers();
-	const firstPage = props.currentPage < 4 ? style.noBlock : null;
-	const lastPage = props.currentPage > lastUsersPage - 10 ? style.noBlock : null;
+const Users = memo(() => {
+
+	const [isMount, setIsMaoun] = useState(true);
+
+	const users = useSelector(getUsers);
+	const currentPage = useSelector(getCurrentPage);
+	const pageSize = useSelector(getPageSize);
+	const followingInProgress = useSelector(getFollowingInProgress);
+	const usersFilter = useSelector(getUsersFilter);
+
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		if (isMount) {
+			dispatch(requestUsers(currentPage, pageSize));
+			setIsMaoun(false);
+		}
+	}, [isMount, dispatch, currentPage, pageSize]);
+
+	const onPageChanged = useCallback((page) => {
+		dispatch(requestUsers(page, pageSize, usersFilter.term));
+	}, [dispatch, pageSize, usersFilter]);
+
+	const onUnFollow = useCallback((userId) => {
+		dispatch(unFollow(userId));
+	}, [dispatch]);
+
+	const onFollow = useCallback((userId) => {
+		dispatch(follow(userId));
+	}, [dispatch]);
+
+	const onFilterChanged = (filter) => {
+		dispatch(requestUsers(1, pageSize, filter.term));
+	}
+
+	const userItem = users.map(u =>
+	(<UserItem
+		photoSmall={u.photos.small}
+		fullName={u.name}
+		status={u.status}
+		followed={u.followed}
+		followingInProgress={followingInProgress}
+		unFollow={onUnFollow}
+		follow={onFollow}
+		id={u.id}
+		key={u.id} />));
 
 	return (
 		<div className={style.users}>
-			<h2 className='title'>Users</h2>
-			<ul className={style.rowPage}>
-				<li className={firstPage} onClick={() => { props.onPageChanged(1) }} >{'<<'}</li>
-				<li className={firstPage} onClick={() => { props.onPageChanged(props.currentPage - 1) }} >{'<'}</li>
-				{listPageNumbers.map(p => {
-					return <li className={props.currentPage === p ? style.selectedPage : null}
-						onClick={() => { props.onPageChanged(p); }} key={p}>{p}</li>
-				})}
-				<li className={lastPage} onClick={() => { props.onPageChanged(props.currentPage + 1) }} >{'>'}</li>
-				<li className={lastPage} onClick={() => { props.onPageChanged(lastUsersPage) }} >{'>>'}</li>
-			</ul>
-			<div className={style.rowUsers}>
-				{
-					props.users.map(u =>
-						<div className={style.itemUserWrapper} key={u.id}>
-							<NavLink to={'/profile/' + u.id}>
-								<div className={style.itemUser}>
-									<div className={style.userAvatar}>
-										<img src={u.photos.small != null ? u.photos.small : userPhoto} alt="avatar" />
-									</div>
-									<div className={style.textUser}>
-										{u.name}
-										<address>
-											{'u.location.city'}, {'u.location.country'}
-										</address>
-										<span>
-											{u.status}
-										</span>
-									</div>
-								</div>
-							</NavLink>
-							{
-								u.followed
-									? <button disabled={props.isFollowingInProgress.some(id => id === u.id)}
-										onClick={() => {
-											props.unFollow(u.id)
-										}}>UnFollow
-									</button>
-									: <button disabled={props.isFollowingInProgress.some(id => id === u.id)}
-										onClick={() => {
-											props.follow(u.id);
-										}}>Follow
-									</button>
-							}
-						</div>
-					)
-				}
+			<div className={style.usersHeader}>
+				<h2 className='title'>Users</h2>
+				<UsersSearchForm onFilterChanged={onFilterChanged} />
 			</div>
-			<div className={style.showMore}>
-				<button>Show More</button>
+			<Paginator
+				onPageChanged={onPageChanged}
+				currentPage={currentPage}
+				pageSize={pageSize} />
+			<div className={style.rowUsers}>
+				{userItem}
 			</div>
 		</div>
 	)
-}
+
+});
 
 export default Users;
