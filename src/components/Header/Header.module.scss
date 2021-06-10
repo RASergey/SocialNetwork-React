@@ -6,12 +6,16 @@
 	display: flex;
 }
 
-.hederImg {
+.headerImg {
 	height: 50px;
 	width: 50px;
 	border-radius: 50%;
 	background: rgb(192, 192, 192);
 	box-shadow: -3px 3px 3px rgba(0, 0, 0, 0.5);
+}
+
+.rowButton {
+	margin-top: 3px;
 }
 
 .loginBlock {
@@ -23,22 +27,16 @@
 	line-height: 2;
 	font-size: 20px;
 	margin-top: 5px;
-	float: right;
 }
 
 .login a {
 	color: #fff;
 }
 
-.rowButton {
-	text-align: center;
-	flex: 0 0 75px;
+.header a:last-child {
+	margin-left: 15px;
 }
 
-.header button {
-	margin-top: 10px;
-}
-
-.header button a {
+.header a {
 	color: inherit;
 }

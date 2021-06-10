@@ -1,29 +1,43 @@
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import style from './Header.module.css';
+import style from './Header.module.scss';
+import { getIsAuth, getLogin } from '../../redux/autch-selectors';
+import { useCallback } from 'react';
+import { setlogout } from '../../redux/authReducer';
 
-const Header = (props) => {
+const Header = () => {
+
+	const login = useSelector(getLogin);
+	const isAuth = useSelector(getIsAuth);
+
+	const dispath = useDispatch();
+
+	const logOut = useCallback(() => {
+		dispath(setlogout());
+	}, [dispath]);
 
 	return (
 		<header className={style.header}>
 			<div className={style.loginBlock}>
 				<img
-					className={style.hederImg}
+					className={style.headerImg}
 					src='https://www.tctmagazine.com/downloads/8332/download/Autodesk-logo.png?cb=05a923bcee4fbbc61e67476114315d4c&w=2272&h='
 					alt='/' />
-				<span className={style.login}>
-					{props.isAuth ? props.login : null}
-				</span>
 			</div>
 			<div className={style.rowButton}>
-				{props.isAuth ||
+				<span className={style.login}>
+					{isAuth ? login :
+						<NavLink to='/users'><button>Users</button></NavLink>}
+				</span>
+				{isAuth ||
 					<NavLink to='/login'><button>Sign In</button></NavLink>
 				}
-				{!props.isAuth ||
-					<NavLink to='/login'><button onClick={() => props.setlogout()}>log Out</button></NavLink>
+				{!isAuth ||
+					<NavLink to='/login'><button onClick={() => logOut()}>log Out</button></NavLink>
 				}
 			</div>
 		</header>
 	);
-}
+};
 
 export default Header;
