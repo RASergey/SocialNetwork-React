@@ -1,13 +1,9 @@
 import style from './UserItem.module.css';
 import userPhoto from '../../../assets/images/avatar.png'
 import { NavLink } from 'react-router-dom';
-import { memo, useEffect, useState } from 'react';
+import { memo } from 'react';
 
 const UserItem = memo(({ id, photoSmall, fullName, status, followed, followingInProgress, unFollow, follow }) => {
-
-	const [userId, setUserId] = useState(0);
-
-	useEffect(() => setUserId(id), [id])
 
 	return (
 		<div className={style.itemUserWrapper}>
@@ -29,18 +25,17 @@ const UserItem = memo(({ id, photoSmall, fullName, status, followed, followingIn
 			</NavLink>
 			{
 				followed
-					? <button disabled={followingInProgress.some(id => id === userId)}
+					? <button disabled={followingInProgress.some(userId => id === userId)}
 						onClick={() => {
 							unFollow(id)
 						}}>UnFollow</button>
-					: <button disabled={followingInProgress.some(id => id === userId)}
+					: <button disabled={followingInProgress.some(userId => id === userId)}
 						onClick={() => {
 							follow(id);
 						}}>Follow</button>
 			}
 		</div>
-	)
-
+	);
 });
 
 export default UserItem;
