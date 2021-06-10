@@ -2,11 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Route, withRouter } from 'react-router-dom';
 import { compose } from 'redux';
-import './App.css';
+import './App.scss';
 import Preloader from './components/common/Preloader/Preloader';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
 import Friends from './components/Friends/Friends';
-import HeaderContainer from './components/Header/HeaderContainer';
+import Header from './components/Header/Header';
 import Login from './components/Login/Login';
 import Music from './components/Music/Music';
 import NavBarContainer from './components/Navbar/NavbarContainer';
@@ -30,7 +30,7 @@ class App extends React.Component {
 
 		return (
 			<div className='wrapper'>
-				<HeaderContainer />
+				<Header />
 				<div className='container'>
 					<div className={`navBar ${!this.props.isAuth ? 'navBarNone' : ''}`}>
 						<NavBarContainer />

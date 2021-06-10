@@ -1,8 +1,9 @@
 import { Formik } from 'formik';
-import style from './PostForm.module.css';
+import style from './PostForm.module.scss';
 import * as Yup from 'yup';
+import { memo } from 'react';
 
-const PostForm = ({ addPost }) => {
+const PostForm = memo(({ addPost }) => {
 
 	const schema = Yup.object().shape({
 		name: Yup.string()
@@ -42,8 +43,7 @@ const PostForm = ({ addPost }) => {
 				)}
 			</Formik>
 		</div>
-	)
-
-}
+	);
+});
 
 export default PostForm;
