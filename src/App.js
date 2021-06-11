@@ -14,7 +14,9 @@ import News from './components/News/News';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import Settings from './components/Settings/Settings';
 import UsersPage from './components/Users/UsersPage';
+import { getInitialized } from './redux/app-selectors';
 import { initializedApp } from './redux/appReducer';
+import { getIsAuth } from './redux/autch-selectors';
 
 class App extends React.Component {
 
@@ -52,8 +54,8 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-	initialized: state.app.initialized,
-	isAuth: state.auth.isAuth
+	initialized: getInitialized(state),
+	isAuth: getIsAuth(state)
 })
 
 export default compose(

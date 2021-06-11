@@ -1,11 +1,11 @@
 import { Formik } from 'formik';
-import style from './MessageForm.module.css';
-import * as Yup from 'yup';
+import style from './MessageForm.module.scss';
+import * as yup from 'yup';
 
 const MessageForm = ({ sendMessage }) => {
 
-	const schema = Yup.object().shape({
-		newMessageBody: Yup.string()
+	const schema = yup.object().shape({
+		newMessageBody: yup.string()
 			.max(50, 'Must be 50 characters or less')
 	});
 
@@ -46,7 +46,7 @@ const MessageForm = ({ sendMessage }) => {
 				}
 			</Formik>
 		</div>
-	)
-}
+	);
+};
 
 export default MessageForm;

@@ -1,12 +1,12 @@
 import { Formik } from 'formik';
 import style from './PostForm.module.scss';
-import * as Yup from 'yup';
+import * as yup from 'yup';
 import { memo } from 'react';
 
 const PostForm = memo(({ addPost }) => {
 
-	const schema = Yup.object().shape({
-		name: Yup.string()
+	const schema = yup.object().shape({
+		name: yup.string()
 			.min(3, 'Must be 3 characters or more')
 			.max(50, 'Must be 50 characters or less')
 	});

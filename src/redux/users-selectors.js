@@ -1,8 +1,8 @@
 import { createSelector } from "reselect";
 
 const getUsersSelector = state => state.usersPage.users;
-export const getPageSizeSelector = state => state.usersPage.pageSize;
-export const getTotalUsersCountSelector = state => state.usersPage.totalUsersCount;
+const getPageSizeSelector = state => state.usersPage.pageSize;
+const getTotalUsersCountSelector = state => state.usersPage.totalUsersCount;
 export const getCurrentPage = state => state.usersPage.currentPage;
 export const getIsFetching = state => state.usersPage.isFetching;
 export const getFollowingInProgress = state => state.usersPage.followingInProgress;

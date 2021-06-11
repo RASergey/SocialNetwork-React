@@ -1,12 +1,12 @@
 import { Form, Formik } from 'formik';
 import { memo } from 'react';
 import style from './UsersSearchForm.module.scss';
-import * as Yup from 'yup';
+import * as yup from 'yup';
 
 const UsersSearchForm = memo(({ onFilterChanged }) => {
 
-	const schema = Yup.object().shape({
-		term: Yup.string()
+	const schema = yup.object().shape({
+		term: yup.string()
 			.min(3, 'Must be 3 characters or more')
 			.max(20, 'Must be 20 characters or less')
 	});
