@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useCallback } from 'react';
+import { memo } from 'react';
 import { useEffect } from 'react';
 import style from './ProfileStatus.module.scss';
 
-const ProfileStatus = ({ status, authorizedUserId, currentUserId, updateUserStatus }) => {
+const ProfileStatus = memo(({ status, authorizedUserId, currentUserId, updateUserStatus }) => {
 
 	const [editMode, setEditMode] = useState(false);
 	const [newStatus, setNewStatus] = useState('');
@@ -16,18 +18,18 @@ const ProfileStatus = ({ status, authorizedUserId, currentUserId, updateUserStat
 		setIsYuorProfile(authorizedUserId === Number(currentUserId));
 	}, [authorizedUserId, currentUserId]);
 
-	const activateEditMode = () => {
+	const activateEditMode = useCallback(() => {
 		setEditMode(true);
-	};
+	}, [setEditMode]);
 
-	const deActivateEditMode = () => {
+	const deActivateEditMode = useCallback(() => {
 		setEditMode(false);
 		updateUserStatus(newStatus);
-	};
+	}, [setEditMode, updateUserStatus, newStatus]);
 
-	const onStatusChange = (e) => {
+	const onStatusChange = useCallback((e) => {
 		setNewStatus(e.currentTarget.value)
-	};
+	}, [setNewStatus]);
 
 	return (
 		<div>
@@ -43,6 +45,6 @@ const ProfileStatus = ({ status, authorizedUserId, currentUserId, updateUserStat
 			}
 		</div>
 	);
-};
+});
 
 export default ProfileStatus;
