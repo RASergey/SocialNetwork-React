@@ -28,7 +28,7 @@ class App extends React.Component {
 
 		if (!this.props.initialized) {
 			return <Preloader isFetching='true' />
-		}
+		};
 
 		return (
 			<div className='wrapper'>
@@ -49,16 +49,16 @@ class App extends React.Component {
 					</div>
 				</div>
 			</div>
-		)
-	}
-}
+		);
+	};
+};
 
 const mapStateToProps = (state) => ({
 	initialized: getInitialized(state),
 	isAuth: getIsAuth(state)
-})
+});
 
 export default compose(
 	withRouter,
 	connect(mapStateToProps, { initializedApp })
-)(App)
+)(App);
