@@ -1,13 +1,14 @@
-import MyPostsContainer from './MyPosts/MyPostsContainer';
-import style from './Profile.module.css';
-import ProfileInfoContainer from './ProfileInfo/ProfileInfoContainer';
+import MyPosts from './MyPosts/MyPosts';
+import style from './Profile.module.scss';
+import ProfileInfo from './ProfileInfo/ProfileInfo';
 
-const Profile = (props) => {
+const Profile = ({ currentUserId }) => {
+
 	return (
 		<div className={style.profile}>
-			<ProfileInfoContainer currentUserId={props.currentUserId} />
-			<MyPostsContainer />
+			<ProfileInfo currentUserId={currentUserId} />
+			<MyPosts />
 		</div>
-	)
-}
+	);
+};
 export default Profile;
