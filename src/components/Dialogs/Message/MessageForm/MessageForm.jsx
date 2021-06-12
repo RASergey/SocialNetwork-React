@@ -42,8 +42,8 @@ const MessageForm = memo(() => {
 								className={errors.newMessageBody && touched.newMessageBody ? styleError.error : null}
 							/>
 							{errors.newMessageBody && touched.newMessageBody
-								? (<span className={styleError.errorMessage}>{errors.newMessageBody}</span>)
-								: null}
+								? (<span className={styleError.errorMessage + ' ' + styleError.errorMessageTextarea}>
+									{errors.newMessageBody}</span>) : null}
 						</div>
 						<div className={style.sendMessageButton}>
 							<button

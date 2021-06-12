@@ -1,0 +1,19 @@
+.usersSearchForm {
+	position: relative;
+	margin-top: 10px;
+}
+
+.usersSearchForm input {
+	padding: 5px;
+	background: rgba(240, 240, 240, 0.5);
+}
+
+.usersSearchForm input:hover,
+input:focus {
+	background: #fff;
+	color: #000;
+}
+
+.usersSearchForm button {
+	margin-left: 15px;
+}

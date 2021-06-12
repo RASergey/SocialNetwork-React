@@ -1,7 +1,7 @@
+import style from '../../../styles/stylesUsersPage/Paginator.module.scss';
 import { memo, useCallback, useEffect, useLayoutEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { getTotalUsersCount } from '../../../redux/users-selectors';
-import style from './Paginator.module.css';
 
 const Paginator = memo(({ pageSize, currentPage, onPageChanged, portionSize = 10 }) => {
 
@@ -77,8 +77,7 @@ const Paginator = memo(({ pageSize, currentPage, onPageChanged, portionSize = 10
 				className={portionCount <= portionNumber ? style.noActiv : null}
 				onClick={() => { clickPageLast(listPages.length) }} >{'Last'}</button>
 		</div>
-	)
-
+	);
 });
 
 export default Paginator;

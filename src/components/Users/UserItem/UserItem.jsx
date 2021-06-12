@@ -1,4 +1,4 @@
-import style from './UserItem.module.css';
+import style from '../../../styles/stylesUsersPage/UserItem.module.scss';
 import userPhoto from '../../../assets/images/avatar.png'
 import { NavLink } from 'react-router-dom';
 import { memo } from 'react';

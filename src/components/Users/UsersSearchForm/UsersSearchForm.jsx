@@ -1,7 +1,8 @@
+import style from '../../../styles/stylesUsersPage/UsersSearchForm.module.scss';
+import styleError from '../../../styles/stylesError/Error.module.scss';
+import * as yup from 'yup';
 import { Form, Formik } from 'formik';
 import { memo } from 'react';
-import style from './UsersSearchForm.module.scss';
-import * as yup from 'yup';
 
 const UsersSearchForm = memo(({ onFilterChanged }) => {
 
@@ -25,17 +26,19 @@ const UsersSearchForm = memo(({ onFilterChanged }) => {
 			>
 				{({ isSubmitting, values, errors, touched, handleChange, handleBlur, isValid, handleSubmit, dirty }) => (
 					<Form>
-						{errors.term && touched.term ? (<span className={style.errorMessage}>{errors.term}</span>) : null}
+						{errors.term && touched.term
+							? (<span className={styleError.errorMessage + ' ' + styleError.errorMessageFind}>
+								{errors.term}</span>) : null}
 						<input
 							type={'text'}
 							name={'term'}
 							value={values.name}
 							onChange={handleChange}
 							onBlur={handleBlur}
-							className={errors.term && touched.term ? style.error : null} />
+							className={errors.term && touched.term ? styleError.error : null} />
 						<button
 							type='submit'
-							className={dirty && isValid ? "" : style.disabledBtn}
+							className={dirty && isValid ? "" : styleError.disabledBtn}
 							disabled={isSubmitting}
 							onClick={handleSubmit}
 						>Find</button>

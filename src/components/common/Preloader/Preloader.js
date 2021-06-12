@@ -1,5 +1,5 @@
+import style from '../../../styles/Preloader.module.scss';
 import louding from '../../../assets/images/Spin-2.1s-131px.svg';
-import style from './Preloader.module.css';
 
 const Preloader = () => {
 
@@ -7,8 +7,7 @@ const Preloader = () => {
 		<div className={style.wrapperPreloader}>
 			<img src={louding} alt={'loading'} />
 		</div>
-	)
-
+	);
 };
 
 export default Preloader;

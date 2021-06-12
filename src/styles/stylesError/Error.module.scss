@@ -16,8 +16,20 @@
 	bottom: 10%;
 }
 
-.errorMessage {
+.errorMessageTextarea {
 	left: 30%;
+}
+
+.errorMessageFind {
+	right: 103%;
+	display: inline-block;
+	bottom: 22px;
+}
+
+@media only screen and (max-width: 980px) {
+	.errorMessageFind {
+		display: none;
+	}
 }
 
 .disabledBtn {

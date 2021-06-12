@@ -1,8 +1,8 @@
-import React, { memo, useCallback, useEffect, useState } from 'react';
-import style from './Users.module.css';
+import style from '../../styles/stylesUsersPage/Users.module.scss';
 import Paginator from './Paginator/Paginator';
 import UserItem from './UserItem/UserItem';
 import UsersSearchForm from './UsersSearchForm/UsersSearchForm';
+import { memo, useCallback, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentPage, getPageSize, getUsers, getFollowingInProgress, getUsersFilter } from '../../redux/users-selectors';
 import { requestUsers, unFollow, follow } from '../../redux/usersReducer';
