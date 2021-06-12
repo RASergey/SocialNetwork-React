@@ -1,4 +1,4 @@
-import style from '../../styles/styleNewsPage/News.module.scss';
+import style from '../../styles/stylesNewsPage/News.module.scss';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 
 const News = () => {
