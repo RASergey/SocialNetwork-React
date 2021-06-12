@@ -1,19 +1,19 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { Route, withRouter } from 'react-router-dom';
-import { compose } from 'redux';
 import './App.scss';
-import Preloader from './components/common/Preloader/Preloader';
+import React from 'react';
 import Dialogs from './components/Dialogs/Dialogs';
 import Friends from './components/Friends/Friends';
 import Header from './components/Header/Header';
 import Login from './components/Login/Login';
 import Music from './components/Music/Music';
-import NavBarContainer from './components/Navbar/NavbarContainer';
+import NavBar from './components/Navbar/Navbar';
 import News from './components/News/News';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import Settings from './components/Settings/Settings';
 import UsersPage from './components/Users/UsersPage';
+import Preloader from './components/common/Preloader/Preloader';
+import { Route, withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { getInitialized } from './redux/app-selectors';
 import { initializedApp } from './redux/appReducer';
 import { getIsAuth } from './redux/autch-selectors';
@@ -25,7 +25,6 @@ class App extends React.Component {
 	}
 
 	render() {
-
 		if (!this.props.initialized) {
 			return <Preloader isFetching='true' />
 		};
@@ -35,7 +34,7 @@ class App extends React.Component {
 				<Header />
 				<div className='container'>
 					<div className={`navBar ${!this.props.isAuth ? 'navBarNone' : ''}`}>
-						<NavBarContainer />
+						<NavBar />
 					</div>
 					<div className='content'>
 						<Route path='/profile/:userId?' render={() => <ProfileContainer />} />
