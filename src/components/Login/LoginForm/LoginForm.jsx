@@ -1,6 +1,6 @@
-import { Field, Form, Formik } from 'formik';
-import style from './LoginForm.module.scss';
+import style from '../../../styles/stylesLoginPage/LoginForm.module.scss';
 import * as yup from 'yup';
+import { Field, Form, Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { setLogin } from '../../../redux/authReducer';
 import { memo, useCallback } from 'react';

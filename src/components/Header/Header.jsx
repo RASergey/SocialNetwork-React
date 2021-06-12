@@ -1,11 +1,12 @@
+import style from '../../styles/stylesHeader/Header.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import style from './Header.module.scss';
 import { getIsAuth, getLogin } from '../../redux/autch-selectors';
 import { useCallback } from 'react';
 import { setlogout } from '../../redux/authReducer';
+import { memo } from 'react';
 
-const Header = () => {
+const Header = memo(() => {
 
 	const login = useSelector(getLogin);
 	const isAuth = useSelector(getIsAuth);
@@ -38,6 +39,6 @@ const Header = () => {
 			</div>
 		</header>
 	);
-};
+});
 
 export default Header;
