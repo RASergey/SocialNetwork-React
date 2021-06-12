@@ -1,4 +1,4 @@
-import style from './Inbox.module.css';
+import style from '../../../../styles/stylesDialogsPage/Inbox.module.scss';
 
 const Inbox = ({ avatar, inMessage }) => {
 
@@ -8,7 +8,6 @@ const Inbox = ({ avatar, inMessage }) => {
 			<span className={style.text}>{inMessage}</span>
 		</div>
 	)
-
 };
 
 export default Inbox;

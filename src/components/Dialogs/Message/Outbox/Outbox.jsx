@@ -1,4 +1,4 @@
-import style from './Outbox.module.css';
+import style from '../../../../styles/stylesDialogsPage/Outbox.module.scss';
 
 const Outbox = ({ outMessage, avatar }) => {
 
@@ -8,7 +8,6 @@ const Outbox = ({ outMessage, avatar }) => {
 			<img className={style.avatar} src={avatar} alt='avatar' />
 		</div>
 	)
-
 };
 
 export default Outbox;
