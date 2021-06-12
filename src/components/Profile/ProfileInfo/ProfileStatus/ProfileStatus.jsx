@@ -2,13 +2,21 @@ import React, { useState } from 'react';
 import { useCallback } from 'react';
 import { memo } from 'react';
 import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { updateUserStatus } from '../../../../redux/profileReducer';
 import style from './ProfileStatus.module.scss';
 
-const ProfileStatus = memo(({ status, authorizedUserId, currentUserId, updateUserStatus }) => {
+const ProfileStatus = memo(({ status, authorizedUserId, currentUserId }) => {
 
 	const [editMode, setEditMode] = useState(false);
 	const [newStatus, setNewStatus] = useState('');
 	const [isYuorProfile, setIsYuorProfile] = useState(false);
+
+	const dispatch = useDispatch();
+
+	const updateStatus = useCallback((newStatus) => {
+		dispatch(updateUserStatus(newStatus));
+	}, [dispatch]);
 
 	useEffect(() => {
 		setNewStatus(status);
@@ -24,11 +32,11 @@ const ProfileStatus = memo(({ status, authorizedUserId, currentUserId, updateUse
 
 	const deActivateEditMode = useCallback(() => {
 		setEditMode(false);
-		updateUserStatus(newStatus);
-	}, [setEditMode, updateUserStatus, newStatus]);
+		updateStatus(newStatus);
+	}, [setEditMode, updateStatus, newStatus]);
 
 	const onStatusChange = useCallback((e) => {
-		setNewStatus(e.currentTarget.value)
+		setNewStatus(e.currentTarget.value);
 	}, [setNewStatus]);
 
 	return (

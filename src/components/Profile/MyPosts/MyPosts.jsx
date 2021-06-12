@@ -1,22 +1,29 @@
 import React from 'react';
-import style from './MyPosts.module.css';
+import { useMemo } from 'react';
+import { memo } from 'react';
+import { useSelector } from 'react-redux';
+import { getPosts } from '../../../redux/profile-selectors';
+import style from './MyPosts.module.scss';
 import Post from './Post/Post';
 import PostForm from './PostForm/PostForm';
 
-const MyPosts = ({ posts, addPost }) => {
+const MyPosts = memo(() => {
 
-	let postElements = posts.map(p => <Post avatar={p.avatar} message={p.message} key={p.id} likesCount={p.likesCount} />);
+	const posts = useSelector(getPosts);
+
+	const postElements = useMemo(() => {
+		return posts.map(p => <Post avatar={p.avatar} message={p.message} key={p.id} likesCount={p.likesCount} />);
+	}, [posts]);
 
 	return (
 		<div className={style.mypost}>
 			<h2 className='title'>My post</h2>
-			<PostForm addPost={addPost} />
+			<PostForm />
 			<div className={style.rowPost}>
 				{postElements}
 			</div>
 		</div>
-	)
-
-}
+	);
+});
 
 export default MyPosts;

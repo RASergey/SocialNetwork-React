@@ -1,9 +1,17 @@
 import { Formik } from 'formik';
 import style from './PostForm.module.scss';
 import * as yup from 'yup';
-import { memo } from 'react';
+import { memo, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
+import { addPost } from '../../../../redux/profileReducer';
 
-const PostForm = memo(({ addPost }) => {
+const PostForm = memo(() => {
+
+	const disppatch = useDispatch();
+
+	const addNewPost = useCallback((value) => {
+		disppatch(addPost(value));
+	}, [disppatch]);
 
 	const schema = yup.object().shape({
 		name: yup.string()
@@ -18,7 +26,7 @@ const PostForm = memo(({ addPost }) => {
 					name: '',
 				}}
 				onSubmit={(values) => {
-					addPost(values.name);
+					addNewPost(values.name);
 				}}
 				validationSchema={schema}
 			>

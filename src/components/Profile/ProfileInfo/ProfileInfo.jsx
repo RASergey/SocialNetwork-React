@@ -1,11 +1,21 @@
-import style from './ProfileInfo.module.css';
+import style from './ProfileInfo.module.scss';
 import Preloader from '../../common/Preloader/Preloader';
 import profilePhoto from '../../../assets/images/avatar.png';
 import ProfileStatus from './ProfileStatus/ProfileStatus';
+import { memo } from 'react';
+import { useSelector } from 'react-redux';
+import { getProfile, getStatus } from '../../../redux/profile-selectors';
+import { getUserId } from '../../../redux/autch-selectors';
+import { getIsFetching } from '../../../redux/users-selectors';
 
-const ProfileInfo = (props) => {
+const ProfileInfo = memo(({ currentUserId }) => {
 
-	if (!props.profile) {
+	const profile = useSelector(getProfile);
+	const status = useSelector(getStatus);
+	const authorizedUserId = useSelector(getUserId);
+	const isFetching = useSelector(getIsFetching);
+
+	if (!profile) {
 		return (
 			<div>
 				<Preloader />
@@ -15,34 +25,32 @@ const ProfileInfo = (props) => {
 
 	return (
 		<div className={style.rowprofile}>
-			{props.isFetching ? <Preloader /> : null}
-			<img className={style.avatar} src={props.profile.photos.small != null ? props.profile.photos.small : profilePhoto} alt='/' />
+			{isFetching ? <Preloader /> : null}
+			<img className={style.avatar} src={profile.photos.small != null ? profile.photos.small : profilePhoto} alt='/' />
 			<div className={style.listUserInfo}>
 				<div className={style.rowNameStatus}>
-					<p className={style.fullName}>{props.profile.fullName}</p>
+					<p className={style.fullName}>{profile.fullName}</p>
 					<ProfileStatus
-						status={props.status}
-						authorizedUserId={props.authorizedUserId}
-						currentUserId={props.currentUserId}
-						updateUserStatus={props.updateUserStatus} />
+						status={status}
+						authorizedUserId={authorizedUserId}
+						currentUserId={currentUserId} />
 				</div>
 				<ul className={style.contacts}>
-					<li><strong>facebook:</strong> {props.profile.contacts.facebook}</li>
-					<li><strong>website:</strong> {props.profile.contacts.website}</li>
-					<li><strong>vk:</strong> {props.profile.contacts.vk}</li>
-					<li><strong>twitter:</strong> {props.profile.contacts.twitter}</li>
-					<li><strong>instagram:</strong> {props.profile.contacts.instagram}</li>
-					<li><strong>github:</strong> {props.profile.contacts.github}</li>
-					<li><strong>mainLink:</strong> {props.profile.contacts.mainLink}</li>
-					<li><strong>youtube:</strong> {props.profile.contacts.youtube}</li>
+					<li><strong>facebook:</strong> {profile.contacts.facebook}</li>
+					<li><strong>website:</strong> {profile.contacts.website}</li>
+					<li><strong>vk:</strong> {profile.contacts.vk}</li>
+					<li><strong>twitter:</strong> {profile.contacts.twitter}</li>
+					<li><strong>instagram:</strong> {profile.contacts.instagram}</li>
+					<li><strong>github:</strong> {profile.contacts.github}</li>
+					<li><strong>mainLink:</strong> {profile.contacts.mainLink}</li>
+					<li><strong>youtube:</strong> {profile.contacts.youtube}</li>
 				</ul>
-				<p className={style.aboutMe}>{props.profile.aboutMe}</p>
-				<p className={style.lookingForAJob}>{props.profile.lookingForAJob ? 'Уже Работаю' : 'Ищу работу'}</p>
-				<p className={style.lookingForAJobDescription}>{props.profile.lookingForAJobDescription}</p>
+				<p className={style.aboutMe}>{profile.aboutMe}</p>
+				<p className={style.lookingForAJob}>{profile.lookingForAJob ? 'Уже Работаю' : 'Ищу работу'}</p>
+				<p className={style.lookingForAJobDescription}>{profile.lookingForAJobDescription}</p>
 			</div>
 		</div>
-	)
-
-}
+	);
+});
 
 export default ProfileInfo;
