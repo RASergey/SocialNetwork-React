@@ -1,8 +1,18 @@
 import { Formik } from 'formik';
-import style from './MessageForm.module.scss';
+import style from '../../../../styles/stylesDialogsPage/MessageForm.module.scss';
+import styleError from '../../../../styles/Error.module.scss';
 import * as yup from 'yup';
+import { useDispatch } from 'react-redux';
+import { memo, useCallback } from 'react';
+import { sendMessage } from '../../../../redux/dialogsReducer';
 
-const MessageForm = ({ sendMessage }) => {
+const MessageForm = memo(() => {
+
+	const dispatch = useDispatch();
+
+	const sendNewMessage = useCallback((newMessageBody) => {
+		dispatch(sendMessage(newMessageBody));
+	}, [dispatch]);
 
 	const schema = yup.object().shape({
 		newMessageBody: yup.string()
@@ -16,7 +26,7 @@ const MessageForm = ({ sendMessage }) => {
 					newMessageBody: '',
 				}}
 				onSubmit={(values) => {
-					sendMessage(values.newMessageBody);
+					sendNewMessage(values.newMessageBody);
 				}}
 				validationSchema={schema}
 			>
@@ -29,14 +39,16 @@ const MessageForm = ({ sendMessage }) => {
 								value={values.newMessageBody}
 								onChange={handleChange}
 								onBlur={handleBlur}
-								className={errors.newMessageBody && touched.newMessageBody ? style.error : null}
+								className={errors.newMessageBody && touched.newMessageBody ? styleError.error : null}
 							/>
-							{errors.newMessageBody && touched.newMessageBody ? (<span className={style.errorMessage}>{errors.newMessageBody}</span>) : null}
+							{errors.newMessageBody && touched.newMessageBody
+								? (<span className={styleError.errorMessage}>{errors.newMessageBody}</span>)
+								: null}
 						</div>
 						<div className={style.sendMessageButton}>
 							<button
 								type={'submit'}
-								className={dirty && isValid ? "" : style.disabledBtn}
+								className={dirty && isValid ? "" : styleError.disabledBtn}
 								disabled={!isValid && dirty}
 								onClick={handleSubmit}
 							>Submit</button>
@@ -47,6 +59,6 @@ const MessageForm = ({ sendMessage }) => {
 			</Formik>
 		</div>
 	);
-};
+});
 
 export default MessageForm;

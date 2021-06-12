@@ -1,9 +1,16 @@
-import style from './Dialogs.module.css';
+import { memo } from 'react';
+import { useSelector } from 'react-redux';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { getDialogs } from '../../redux/dialogs-selectors';
+import style from '../../styles/stylesDialogsPage/Dialogs.module.scss';
 import DialogsItem from './DialogsItem/DialogsItem';
-import MessageContainer from './Message/MessageContainer';
+import Message from './Message/Message';
 
-const Dialogs = (props) => {
-	let dialogsElements = props.dialogsPage.dialogs.map(d =>
+const Dialogs = memo(() => {
+
+	const dialogs = useSelector(getDialogs);
+
+	let dialogsElements = dialogs.map(d =>
 		<DialogsItem name={d.name} avatar={d.avatar} id={d.id} key={d.id} />);
 
 	return (
@@ -15,10 +22,10 @@ const Dialogs = (props) => {
 				</div>
 			</div>
 			<div className={style.allMessages}>
-				<MessageContainer />
+				<Message />
 			</div>
 		</div>
-	)
-}
+	);
+});
 
-export default Dialogs;
+export default withAuthRedirect(Dialogs);

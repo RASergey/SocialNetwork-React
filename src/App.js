@@ -4,7 +4,7 @@ import { Route, withRouter } from 'react-router-dom';
 import { compose } from 'redux';
 import './App.scss';
 import Preloader from './components/common/Preloader/Preloader';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
+import Dialogs from './components/Dialogs/Dialogs';
 import Friends from './components/Friends/Friends';
 import Header from './components/Header/Header';
 import Login from './components/Login/Login';
@@ -39,7 +39,7 @@ class App extends React.Component {
 					</div>
 					<div className='content'>
 						<Route path='/profile/:userId?' render={() => <ProfileContainer />} />
-						<Route path='/dialogs' render={() => <DialogsContainer />} />
+						<Route path='/dialogs' render={() => <Dialogs />} />
 						<Route path='/users' render={() => <UsersPage />} />
 						<Route path='/news' component={News} />
 						<Route path='/music' component={Music} />
