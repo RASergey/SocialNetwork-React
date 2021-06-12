@@ -1,7 +1,7 @@
-import { Formik } from 'formik';
 import style from '../../../../styles/stylesDialogsPage/MessageForm.module.scss';
-import styleError from '../../../../styles/Error.module.scss';
+import styleError from '../../../../styles/stylesError/Error.module.scss';
 import * as yup from 'yup';
+import { Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { memo, useCallback } from 'react';
 import { sendMessage } from '../../../../redux/dialogsReducer';
