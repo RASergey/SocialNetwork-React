@@ -7,7 +7,7 @@ import Login from './components/Login/Login';
 import Music from './components/Music/Music';
 import NavBar from './components/Navbar/Navbar';
 import News from './components/News/News';
-import ProfileContainer from './components/Profile/ProfileContainer';
+import Profile from './components/Profile/Profile';
 import Settings from './components/Settings/Settings';
 import UsersPage from './components/Users/UsersPage';
 import Preloader from './components/common/Preloader/Preloader';
@@ -37,7 +37,7 @@ class App extends React.Component {
 						<NavBar />
 					</div>
 					<div className='content'>
-						<Route path='/profile/:userId?' render={() => <ProfileContainer />} />
+						<Route path='/profile/:userId?' render={() => <Profile />} />
 						<Route path='/dialogs' render={() => <Dialogs />} />
 						<Route path='/users' render={() => <UsersPage />} />
 						<Route path='/news' component={News} />
