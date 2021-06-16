@@ -1,11 +1,10 @@
-import React from 'react';
+import style from '../../../styles/stylesProfilePage/MyPosts.module.scss';
+import Post from './Post/Post';
+import PostForm from './PostForm/PostForm';
 import { useMemo } from 'react';
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { getPosts } from '../../../redux/profile-selectors';
-import style from './MyPosts.module.scss';
-import Post from './Post/Post';
-import PostForm from './PostForm/PostForm';
 
 const MyPosts = memo(() => {
 

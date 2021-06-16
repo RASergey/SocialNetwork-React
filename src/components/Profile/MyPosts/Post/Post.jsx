@@ -1,5 +1,5 @@
+import style from '../../../../styles/stylesProfilePage/Post.module.scss';
 import { memo } from 'react';
-import style from './Post.module.scss';
 
 const Post = memo(({ avatar, message, likesCount }) => {
 

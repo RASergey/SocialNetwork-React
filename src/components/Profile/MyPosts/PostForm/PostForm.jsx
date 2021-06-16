@@ -1,6 +1,7 @@
-import { Formik } from 'formik';
-import style from './PostForm.module.scss';
+import style from '../../../../styles/stylesProfilePage/PostForm.module.scss';
+import styleError from '../../../../styles/stylesError/Error.module.scss'
 import * as yup from 'yup';
+import { Formik } from 'formik';
 import { memo, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { addPost } from '../../../../redux/profileReducer';
@@ -38,12 +39,14 @@ const PostForm = memo(() => {
 							value={values.name}
 							onChange={handleChange}
 							onBlur={handleBlur}
-							className={errors.name && touched.name ? style.error : null}
+							className={errors.name && touched.name ? styleError.error : null}
 						/>
-						{errors.name && touched.name ? (<span className={style.errorMessage}>{errors.name}</span>) : null}
+						{errors.name && touched.name
+							? (<span className={styleError.errorMessage + ' ' + styleError.errorMessageTextarea}>
+								{errors.name}</span>) : null}
 						<button
 							type={'submit'}
-							className={dirty && isValid ? "" : style.disabledBtn}
+							className={dirty && isValid ? "" : styleError.disabledBtn}
 							disabled={!isValid && dirty}
 							onClick={handleSubmit}
 						>Submit</button>
