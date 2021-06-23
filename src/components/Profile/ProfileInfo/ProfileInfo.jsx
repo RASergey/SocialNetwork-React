@@ -1,12 +1,12 @@
-import style from './ProfileInfo.module.scss';
+import style from '../../../styles/stylesProfilePage/ProfileInfo.module.scss';
 import Preloader from '../../common/Preloader/Preloader';
 import profilePhoto from '../../../assets/images/avatar.png';
 import ProfileStatus from './ProfileStatus/ProfileStatus';
+import { getUserId } from '../../../redux/autch-selectors';
+import { getProfile, getStatus } from '../../../redux/profile-selectors';
+import { getIsFetching } from '../../../redux/users-selectors';
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
-import { getProfile, getStatus } from '../../../redux/profile-selectors';
-import { getUserId } from '../../../redux/autch-selectors';
-import { getIsFetching } from '../../../redux/users-selectors';
 
 const ProfileInfo = memo(({ currentUserId }) => {
 

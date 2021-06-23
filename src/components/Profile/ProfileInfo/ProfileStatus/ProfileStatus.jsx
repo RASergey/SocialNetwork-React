@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import style from '../../../../styles/stylesProfilePage/ProfileStatus.module.scss';
+import { updateUserStatus } from '../../../../redux/profileReducer';
+import { useState } from 'react';
 import { useCallback } from 'react';
 import { memo } from 'react';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateUserStatus } from '../../../../redux/profileReducer';
-import style from './ProfileStatus.module.scss';
 
 const ProfileStatus = memo(({ status, authorizedUserId, currentUserId }) => {
 
