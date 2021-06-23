@@ -36,14 +36,7 @@ const ProfileInfo = memo(({ currentUserId }) => {
 						currentUserId={currentUserId} />
 				</div>
 				<ul className={style.contacts}>
-					<li><strong>facebook:</strong> {profile.contacts.facebook}</li>
-					<li><strong>website:</strong> {profile.contacts.website}</li>
-					<li><strong>vk:</strong> {profile.contacts.vk}</li>
-					<li><strong>twitter:</strong> {profile.contacts.twitter}</li>
-					<li><strong>instagram:</strong> {profile.contacts.instagram}</li>
-					<li><strong>github:</strong> {profile.contacts.github}</li>
-					<li><strong>mainLink:</strong> {profile.contacts.mainLink}</li>
-					<li><strong>youtube:</strong> {profile.contacts.youtube}</li>
+					{Object.entries(profile.contacts).map((obj, index) => (<li key={index}><strong>{obj[0]}: </strong>{obj[1]}</li>))}
 				</ul>
 				<p className={style.aboutMe}>{profile.aboutMe}</p>
 				<p className={style.lookingForAJob}>{profile.lookingForAJob ? 'Уже Работаю' : 'Ищу работу'}</p>

@@ -3,35 +3,35 @@ import userPhoto from '../../../assets/images/avatar.png'
 import { NavLink } from 'react-router-dom';
 import { memo } from 'react';
 
-const UserItem = memo(({ id, photoSmall, fullName, status, followed, followingInProgress, unFollow, follow }) => {
+const UserItem = memo(({ user, followingInProgress, unFollow, follow }) => {
 
 	return (
 		<div className={style.itemUserWrapper}>
-			<NavLink to={'/profile/' + id}>
+			<NavLink to={'/profile/' + user.id}>
 				<div className={style.itemUser}>
 					<div className={style.userAvatar}>
-						<img src={photoSmall != null ? photoSmall : userPhoto} alt="avatar" />
+						<img src={user.photos.small != null ? user.photos.small : userPhoto} alt="avatar" />
 					</div>
 					<div className={style.textUser}>
-						{fullName}
+						{user.name}
 						<address>
 							{'u.location.city'}, {'u.location.country'}
 						</address>
 						<span>
-							{status}
+							{user.status}
 						</span>
 					</div>
 				</div>
 			</NavLink>
 			{
-				followed
-					? <button disabled={followingInProgress.some(userId => id === userId)}
+				user.followed
+					? <button disabled={followingInProgress.some(userId => user.id === userId)}
 						onClick={() => {
-							unFollow(id)
+							unFollow(user.id)
 						}}>UnFollow</button>
-					: <button disabled={followingInProgress.some(userId => id === userId)}
+					: <button disabled={followingInProgress.some(userId => user.id === userId)}
 						onClick={() => {
-							follow(id);
+							follow(user.id);
 						}}>Follow</button>
 			}
 		</div>

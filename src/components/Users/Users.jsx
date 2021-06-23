@@ -38,21 +38,9 @@ const Users = memo(() => {
 		dispatch(follow(userId));
 	}, [dispatch]);
 
-	const onFilterChanged = (filter) => {
+	const onFilterChanged = useCallback((filter) => {
 		dispatch(requestUsers(1, pageSize, filter.term));
-	}
-
-	const userItem = users.map(u =>
-	(<UserItem
-		photoSmall={u.photos.small}
-		fullName={u.name}
-		status={u.status}
-		followed={u.followed}
-		followingInProgress={followingInProgress}
-		unFollow={onUnFollow}
-		follow={onFollow}
-		id={u.id}
-		key={u.id} />));
+	}, [dispatch, pageSize]);
 
 	return (
 		<div className={style.users}>
@@ -65,11 +53,18 @@ const Users = memo(() => {
 				currentPage={currentPage}
 				pageSize={pageSize} />
 			<div className={style.rowUsers}>
-				{userItem}
+				{
+					users.map(u =>
+					(<UserItem
+						user={u}
+						followingInProgress={followingInProgress}
+						unFollow={onUnFollow}
+						follow={onFollow}
+						key={u.id} />))
+				}
 			</div>
 		</div>
-	)
-
+	);
 });
 
 export default Users;
