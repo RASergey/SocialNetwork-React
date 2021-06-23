@@ -1,10 +1,10 @@
 import { getAuthUserData } from "./authReducer";
 
-const INITIALIZED_SUCCESS = 'INITIALIZED-SUCCESS';
+const INITIALIZED_SUCCESS = 'social-network/app/INITIALIZED-SUCCESS';
 
-let initialState = {
+const initialState = {
 	initialized: false
-}
+};
 
 const appReducer = (state = initialState, action) => {
 	switch (action.type) {
@@ -12,23 +12,21 @@ const appReducer = (state = initialState, action) => {
 			return {
 				...state,
 				initialized: true
-			}
+			};
 		default:
 			return state;
-	}
-}
+	};
+};
 
 export const initializedSuccess = () => ({ type: INITIALIZED_SUCCESS });
 
 export const initializedApp = () => {
-	return (dispatch) => {
-		let promise = dispatch(getAuthUserData());
+	return async (dispatch) => {
+		const promise = dispatch(getAuthUserData());
 
-		Promise.all([promise])
-			.then(() => {
-				dispatch(initializedSuccess());
-			})
-	}
-}
+		await Promise.all([promise]);
+		dispatch(initializedSuccess());
+	};
+};
 
 export default appReducer;

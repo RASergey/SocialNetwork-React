@@ -4,8 +4,8 @@ export const getUserId = state => state.auth.userId;
 export const getLogin = state => state.auth.login;
 export const getEmail = state => state.auth.email;
 const getIsAuthSelector = state => state.auth.isAuth;
-export const getMessageError = state => state.auth.messageError;
 
 export const getIsAuth = createSelector(getIsAuthSelector,
 	(isAuth) => isAuth
 );
+

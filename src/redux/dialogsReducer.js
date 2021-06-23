@@ -1,6 +1,6 @@
-const SEND_MESSAGE = 'SEND-MESSAGE';
+const SEND_MESSAGE = 'social-network/dialogs/SEND-MESSAGE';
 
-let initialState = {
+const initialState = {
 	dialogs: [
 		{ id: 0, avatar: 'https://cdn.vox-cdn.com/thumbor/0y8QEqAYroMOoEMU-D7C4kvBU-Y=/95x601:1280x1391/1310x873/cdn.vox-cdn.com/uploads/chorus_image/image/66699059/mgidarccontentnick.comc008fa9d_d.0.png', name: 'Dimych Samuray' },
 		{ id: 1, avatar: 'https://img3.goodfon.ru/wallpaper/nbig/3/51/avatar-neytiri-zoe-saldana-6192.jpg', name: 'Andrey Anisin' },
@@ -24,7 +24,7 @@ let initialState = {
 		],
 		outboundMessages: []
 	},
-}
+};
 
 const dialogsReducer = (state = initialState, action) => {
 	switch (action.type) {
@@ -41,11 +41,11 @@ const dialogsReducer = (state = initialState, action) => {
 						}
 					]
 				},
-			}
+			};
 		default:
 			return state;
-	}
-}
+	};
+};
 
 export const sendMessage = (newMessageBody) => ({ type: SEND_MESSAGE, newMessageBody });
 

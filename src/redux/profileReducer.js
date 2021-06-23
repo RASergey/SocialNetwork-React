@@ -1,12 +1,12 @@
 import { profileAPI } from '../api/api';
 import { toggleIsFetching } from './usersReducer';
 
-const ADD_POST = 'ADD-POST';
-const SET_USER_PROFILE = 'SET-USER-PROFILE';
-const SET_USER_STATUS = 'SET-USER-STATUS';
-const DELETE_POST = 'DELETE-POST';
+const ADD_POST = 'social-network/profile/ADD-POST';
+const SET_USER_PROFILE = 'social-network/profile/SET-USER-PROFILE';
+const SET_USER_STATUS = 'social-network/profile/SET-USER-STATUS';
+const DELETE_POST = 'social-network/profile/DELETE-POST';
 
-let initialState = {
+const initialState = {
 	posts: [
 		{ id: 0, avatar: 'https://i.ytimg.com/vi/rapOSviNLkw/maxresdefault.jpg', message: 'Hi, how are you?', likesCount: 142 },
 		{ id: 1, avatar: 'https://i.ytimg.com/vi/rapOSviNLkw/maxresdefault.jpg', message: 'bla bla', likesCount: 1266 },
@@ -16,7 +16,7 @@ let initialState = {
 	],
 	profile: null,
 	status: ''
-}
+};
 
 const profileReducer = (state = initialState, action) => {
 	switch (action.type) {
@@ -32,22 +32,22 @@ const profileReducer = (state = initialState, action) => {
 					}
 				],
 				newText: '',
-			}
+			};
 		case SET_USER_PROFILE:
 			return {
 				...state,
 				profile: action.profile
-			}
+			};
 		case SET_USER_STATUS: {
-			return { ...state, status: action.status }
+			return { ...state, status: action.status };
 		}
 		case DELETE_POST: {
-			return { ...state, posts: state.posts.filter(p => p.id !== action.postId) }
+			return { ...state, posts: state.posts.filter(p => p.id !== action.postId) };
 		}
 		default:
 			return state;
-	}
-}
+	};
+};
 
 export const addPost = (newPost) => ({ type: ADD_POST, newPost });
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
@@ -55,29 +55,29 @@ export const setUserStatus = (status) => ({ type: SET_USER_STATUS, status });
 export const deletePost = (postId) => ({ type: DELETE_POST, postId });
 
 export const getUserProfile = (userId) => {
-	return (dispatch) => {
+	return async (dispatch) => {
 		dispatch(toggleIsFetching(true));
-		profileAPI.getProfile(userId).then(response => {
-			dispatch(setUserProfile(response.data));
-			dispatch(toggleIsFetching(false));
-		})
-	}
-}
+
+		const response = await profileAPI.getProfile(userId);
+		dispatch(setUserProfile(response.data));
+		dispatch(toggleIsFetching(false));
+	};
+};
 
 export const getUserStatus = (userId) => {
-	return (dispatch) => {
-		profileAPI.getStatus(userId).then(response => {
-			dispatch(setUserStatus(response.data));
-		})
-	}
-}
+	return async (dispatch) => {
+
+		const response = await profileAPI.getStatus(userId);
+		dispatch(setUserStatus(response.data));
+	};
+};
 
 export const updateUserStatus = (status) => {
-	return (dispatch) => {
-		profileAPI.updateStatus(status).then(() => {
-			dispatch(setUserStatus(status));
-		})
-	}
-}
+	return async (dispatch) => {
+
+		await profileAPI.updateStatus(status);
+		dispatch(setUserStatus(status));
+	};
+};
 
 export default profileReducer;
