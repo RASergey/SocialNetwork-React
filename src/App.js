@@ -44,7 +44,7 @@ class App extends React.Component {
 						<Route path='/music' component={Music} />
 						<Route path='/settings' component={Settings} />
 						<Route path='/friends' render={() => <Friends />} />
-						<Route path='/login' component={Login} />
+						<Route path='/login' render={() => <Login />} />
 					</div>
 				</div>
 			</div>

@@ -27,11 +27,11 @@ export const usersAPI = {
 }
 
 export const followAPI = {
-	followDelete(userId) {
+	unFollow(userId) {
 		return instance.delete(`follow/${userId}`)
 			.then(response => checkResultCode(response));
 	},
-	followPost(userId) {
+	follow(userId) {
 		return instance.post(`follow/${userId}`, {})
 			.then(response => checkResultCode(response));
 	}
