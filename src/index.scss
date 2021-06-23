@@ -111,67 +111,8 @@ button:active {
 	box-shadow: 0 0 8px rgb(96, 157, 159);
 }
 
-textarea,
-input {
-	color: #fff;
-	font-size: 20px;
-	resize: none;
-	padding: 10px;
-	box-shadow: 0 0 5px rgb(200, 200, 200);
-	background: rgba(200, 200, 200, 0.3);
-	border-radius: 5px;
-}
-
-textarea:focus {
-	background: #fff;
-	color: #000;
-}
-
-::-webkit-input-placeholder {
-	/* Chrome */
-	color: #000;
-	font-weight: 600;
-	font-size: 24px;
-	transition: opacity 250ms ease-in-out;
-}
-:focus::-webkit-input-placeholder {
-	opacity: 0.5;
-}
-:-ms-input-placeholder {
-	/* IE 10+ */
-	color: #000;
-	font-weight: 600;
-	font-size: 24px;
-	transition: opacity 250ms ease-in-out;
-}
-:focus:-ms-input-placeholder {
-	opacity: 0.5;
-}
-::-moz-placeholder {
-	/* Firefox 19+ */
-	color: #000;
-	font-weight: 600;
-	font-size: 24px;
-	opacity: 1;
-	transition: opacity 250ms ease-in-out;
-}
-:focus::-moz-placeholder {
-	opacity: 0.5;
-	font-weight: 600;
-	font-size: 24px;
-}
-:-moz-placeholder {
-	/* Firefox 4 - 18 */
-	color: #000;
-	font-weight: 600;
-	font-size: 24px;
-	opacity: 1;
-	transition: opacity 250ms ease-in-out;
-}
-:focus:-moz-placeholder {
-	opacity: 0.5;
-	font-weight: 600;
-	font-size: 24px;
+button:focus {
+	border: 1px solid #000;
 }
 
 .title {

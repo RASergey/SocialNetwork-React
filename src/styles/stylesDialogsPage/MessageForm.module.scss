@@ -2,23 +2,22 @@
 	width: 100%;
 }
 
-.sendMessage {
+.messageForm form {
 	display: flex;
 	align-items: flex-end;
 	position: relative;
 }
 
-.sendMessageText {
+.messageForm div {
 	flex: 1 1 auto;
 	margin-top: 10px;
-	border-radius: 5px;
 	margin-left: 2px;
 }
 
-.sendMessageText textarea {
-	width: 100%;
+.messageForm button {
+	margin-left: 10px;
 }
 
-.sendMessageButton button {
-	margin-left: 10px;
+.messageForm span {
+	left: 30%;
 }

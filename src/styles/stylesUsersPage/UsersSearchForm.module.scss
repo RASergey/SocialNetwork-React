@@ -1,19 +1,27 @@
 .usersSearchForm {
-	position: relative;
 	margin-top: 10px;
 }
 
-.usersSearchForm input {
-	padding: 5px;
-	background: rgba(240, 240, 240, 0.5);
+.usersSearchForm form {
+	display: flex;
 }
 
-.usersSearchForm input:hover,
-input:focus {
-	background: #fff;
-	color: #000;
+.usersSearchForm form div {
+	position: relative;
 }
 
 .usersSearchForm button {
 	margin-left: 15px;
+}
+
+.usersSearchForm span {
+	position: absolute;
+	display: inline-block;
+	left: -130%;
+}
+
+@media only screen and (max-width: 980px) {
+	.usersSearchForm span {
+		display: none;
+	}
 }

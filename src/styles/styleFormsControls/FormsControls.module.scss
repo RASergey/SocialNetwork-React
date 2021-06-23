@@ -1,0 +1,119 @@
+.error {
+	position: relative;
+	box-shadow: 2px 2px 3px red, -2px -2px 3px red;
+}
+
+.errorMessage {
+	display: inline-block;
+	padding: 5px 10px 5px;
+	text-align: center;
+	color: #fff;
+	font-size: 1.3rem;
+	background: rgba(255, 0, 0, 0.6);
+	border-radius: 5px;
+	white-space: nowrap;
+	position: absolute;
+	bottom: 10%;
+}
+
+textarea {
+	width: 100%;
+}
+
+textarea,
+input {
+	color: #fff;
+	font-size: 20px;
+	resize: none;
+	padding: 10px;
+	box-shadow: 0 0 5px rgb(200, 200, 200);
+	background: rgba(200, 200, 200, 0.3);
+	border-radius: 5px;
+}
+
+textarea:hover,
+textarea:focus,
+input:hover,
+input:focus {
+	background: #fff;
+	color: #000;
+	transition: all 0.3s;
+}
+
+.disabledBtn {
+	pointer-events: none;
+	opacity: 0.5;
+}
+
+.checkbox {
+	display: none;
+}
+
+.checkbox:checked + label {
+	transition: all 0.3s;
+	color: #08ea00;
+}
+
+.checkbox:checked + label::before {
+	transition: all 0.3s;
+	background: #08ea00;
+}
+
+.checkbox:checked + label::after {
+	transition: all 0.3s;
+	background: black;
+}
+
+::-webkit-input-placeholder {
+	/* Chrome */
+	color: #000;
+	font-weight: 600;
+	font-size: 24px;
+	transition: opacity 250ms ease-in-out;
+}
+
+:focus::-webkit-input-placeholder {
+	opacity: 0.5;
+}
+
+:-ms-input-placeholder {
+	/* IE 10+ */
+	color: #000;
+	font-weight: 600;
+	font-size: 24px;
+	transition: opacity 250ms ease-in-out;
+}
+
+:focus:-ms-input-placeholder {
+	opacity: 0.5;
+}
+
+::-moz-placeholder {
+	/* Firefox 19+ */
+	color: #000;
+	font-weight: 600;
+	font-size: 24px;
+	opacity: 1;
+	transition: opacity 250ms ease-in-out;
+}
+
+:focus::-moz-placeholder {
+	opacity: 0.5;
+	font-weight: 600;
+	font-size: 24px;
+}
+
+:-moz-placeholder {
+	/* Firefox 4 - 18 */
+	color: #000;
+	font-weight: 600;
+	font-size: 24px;
+	opacity: 1;
+	transition: opacity 250ms ease-in-out;
+}
+
+:focus:-moz-placeholder {
+	opacity: 0.5;
+	font-weight: 600;
+	font-size: 24px;
+}
